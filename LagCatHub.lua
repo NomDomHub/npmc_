@@ -145,7 +145,7 @@ local tabs = {
 
 
 tabs.UpdateScript:AddParagraph({
-    Title = "Update : 34",
+    Title = "Update : 35",
     Content = [[
 [+] Script supports more games.
 [+] Add some more scripts.
