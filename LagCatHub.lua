@@ -503,10 +503,9 @@ local Misc = tabs.Localplayer:AddSection("Misc")
 local Lighting = game:GetService("Lighting")
 local RunService = game:GetService("RunService")
 
-
-
 -- Biến kiểm soát trạng thái bật tắt
 local isFullBright = false
+local fullBrightConnection
 
 -- Toggle Full Bright
 Misc:AddToggle("FullBrightToggle", {
@@ -515,8 +514,26 @@ Misc:AddToggle("FullBrightToggle", {
     Callback = function(state)
         isFullBright = state
 
-        -- Nếu tắt thì khôi phục lại Lighting mặc định
-        if not state then
+        if state then
+            -- Kết nối hàm FullBright nếu chưa kết nối
+            if not fullBrightConnection then
+                fullBrightConnection = RunService.RenderStepped:Connect(function()
+                    if isFullBright then
+                        Lighting.Brightness = 10
+                        Lighting.ClockTime = 12
+                        Lighting.FogEnd = 1e10
+                        Lighting.GlobalShadows = false
+                    end
+                end)
+            end
+        else
+            -- Ngắt kết nối nếu đang kết nối
+            if fullBrightConnection then
+                fullBrightConnection:Disconnect()
+                fullBrightConnection = nil
+            end
+
+            -- Khôi phục lại Lighting mặc định
             Lighting.Brightness = 2
             Lighting.ClockTime = 14
             Lighting.FogEnd = 1000
@@ -525,15 +542,6 @@ Misc:AddToggle("FullBrightToggle", {
     end
 })
 
--- Hàm chạy mỗi frame
-RunService.RenderStepped:Connect(function()
-    if isFullBright then
-        Lighting.Brightness = 10
-        Lighting.ClockTime = 12
-        Lighting.FogEnd = 1e10
-        Lighting.GlobalShadows = false
-    end
-end)
 
 
 -- Biến để lưu trạng thái của toggle
@@ -1508,6 +1516,13 @@ Mainbf:AddButton({
     getgenv().Hide_Menu = false
     getgenv().Auto_Execute = false
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()  
+    end
+})    Mainbf:AddButton({
+    Title = "Nova Cat Hub",
+    Description = "I don't know",
+    Callback = function()
+        getgenv().Key = "NOVA-94PNB-WGKB-SFU5-CJCCW-G84HU"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/viperobii/xShibal/refs/heads/main/KaitunShibal.lua"))()
     end
 })    Mainbf:AddButton({
     Title = "Banana Fake ( Min Gamming )",
@@ -2521,6 +2536,13 @@ local GrowMain = tabs.Growagarden:AddSection("Main")
 
 
     GrowMain:AddButton({
+    Title = "Nova Cat Hub",
+    Description = "I don't know",
+    Callback = function()
+        getgenv().Key = "NOVA-94PNB-WGKB-SFU5-CJCCW-G84HU"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/viperobii/xShibal/refs/heads/main/KaitunShibal.lua"))()
+    end
+})    GrowMain:AddButton({
     Title = "Mukuru Hub",
     Description = "I don't know",
     Callback = function()
