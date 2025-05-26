@@ -178,7 +178,7 @@ local Community = tabs.Infor:AddSection("Community")
 
 -- ⚙️ Phần Thông Tin
 Community:AddButton({
-    Title = "NomDom Community",
+    Title = "Lag Cat Hub",
     Description = "Discord",
     Callback = function()
         setclipboard("https://discord.gg/ZKjAJvYj")
