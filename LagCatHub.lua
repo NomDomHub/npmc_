@@ -41,7 +41,7 @@ local window = Fluent:CreateWindow({
     Title = isSpecialUser and "Lag Cat Hub [Premium]" or "Lag Cat Hub [Freemium]",
     SubTitle = "by Sus | https://discord.gg/ZKjAJvYj",
     TabWidth = (UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled) and 160 or 190,  -- Mobile: 160, PC: 190
-    Theme = "R2LX",
+    Theme = "Dark",
     Acrylic = false,
     Size = (UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled) and UDim2.fromOffset(600, 430) or UDim2.fromOffset(700, 490),  -- Giữ như trước
     MinimizeKey = Enum.KeyCode.LeftControl
@@ -151,6 +151,10 @@ tabs.UpdateScript:AddParagraph({
 [+] Add some more scripts.
 [+] Delete Script NomDom Hub.
 [+] Instead of NomDom Hub it will now be Lag Cat Hub.
+[+] Remove discord link copy notification.
+[+] Add loading and done notifications.
+[+] Change fluent color to dark for easy viewing.
+[+] Fix error of loading effect not finished loading script.
 [+] Increases lag for the machine when running the script because it is too VIP so it takes a long time to load and a lot.
 ]]
 })
