@@ -1,7 +1,16 @@
+game.StarterGui:SetCore("SendNotification", {
+     Title = "Lag Cat Hub";
+     Text = "Loading.....";
+     Icon = "rbxassetid://72597850320651";
+     Duration = "2";
+})
+
 ----- Load hiệu ứng chạy script
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/Loading.lua"))()
 
+
+wait(4.8)
 
 
 -- Tải thư viện Fluent
@@ -5572,6 +5581,17 @@ button.MouseButton1Down:Connect(function()
     -- Gửi phím End để bật/tắt UI
     game:GetService("VirtualInputManager"):SendKeyEvent(true, "LeftControl", false, game)
 end)
+
+
+
+
+
+game.StarterGui:SetCore("SendNotification", {
+     Title = "Lag Cat Hub";
+     Text = "Done";
+     Icon = "rbxassetid://72597850320651";
+     Duration = "2";
+})
 
 
 
