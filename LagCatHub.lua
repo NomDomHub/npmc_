@@ -145,15 +145,20 @@ local tabs = {
 
 
 tabs.UpdateScript:AddParagraph({
-    Title = "Update : 33",
+    Title = "Update : 34",
     Content = [[
-[+] Add some game scripts.
-[+] Adjust Grow a Garden to divide the sections into Main and Kaitun.
-[+] Remake loading effect.
-[+] Add tab split tabs.
-[+] Adjust the on/off button to avoid turning on something else when turning on the UI with that button.
+[+] Script supports more games.
+[+] Add some more scripts.
+[+] Delete Script NomDom Hub.
+[+] Instead of NomDom Hub it will now be Lag Cat Hub.
+[+] Increases lag for the machine when running the script because it is too VIP so it takes a long time to load and a lot.
 ]]
 })
+
+
+
+
+
 
 
 
@@ -5612,7 +5617,7 @@ wait(1)
 
 
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/NomDomHub/refs/heads/main/WedbookScript.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/WedbookScript.lua"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/NomDomHub/refs/heads/main/NotifyBloxFruit.lua"))()
 
