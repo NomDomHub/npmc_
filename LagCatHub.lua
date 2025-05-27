@@ -1618,12 +1618,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangNguyenk8/Roblox/
     end
 })    Mainbf:AddButton({
     Title = "Hiru Hub",
-    Description = "I don't know",
+    Description = "No Key",
     Callback = function()
-        getgenv().DuyKiddoDevTeam = true
-getgenv().Team = "Pirates"
-getgenv().Chat = "Hiru Hub On Top"
-loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/Source/main/HiruHubKiddo.lua"))()
+        repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGames/main/QuestGames.lua"))()
     end
 })     Mainbf:AddButton({
     Title = "Lilnhan V4",
@@ -3411,6 +3409,27 @@ tabs.Petgo:AddButton({
 
 
     tabs.Deedrails:AddButton({
+    Title = "Skull Hub Auto Bond",
+    Description = "Need Key",
+    Callback = function()
+        getgenv().Farm_Bonds = true
+getgenv().Auto_Execute = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua"))()
+    end
+})    tabs.Deedrails:AddButton({
+    Title = "Skull Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua'))()
+    end
+})    tabs.Deedrails:AddButton({
+    Title = "Nat Hub Auto Bond",
+    Description = "No Key",
+    Callback = function()
+        getgenv().auto_bond = true
+loadstring(game:HttpGet("https://get.nathub.xyz/loader"))();
+    end
+})    tabs.Deedrails:AddButton({
     Title = "Nat Hub",
     Description = "No Key",
     Callback = function()
@@ -3604,12 +3623,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/XUANVNPRO/Bondfarm/re
     Description = "Need Key",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/refs/heads/ok/dead%20rails"))()
-    end
-})    tabs.Deedrails:AddButton({
-    Title = "Skull Hub",
-    Description = "Need Key",
-    Callback = function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua'))()
     end
 })    tabs.Deedrails:AddButton({
     Title = "DHHz Hub",
@@ -4763,6 +4776,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Zenhubtop/zen_hub_pr/
 
 
     tabs.MemeSea:AddButton({
+    Title = "Hiru Hub",
+    Description = "No Key",
+    Callback = function()
+        repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGames/main/QuestGames.lua"))()
+    end
+})    tabs.MemeSea:AddButton({
     Title = "SpiderX Hub",
     Description = "I don't know",
     Callback = function()
@@ -5021,6 +5041,13 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/verified/dca3e69649ed1
 
 
     tabs.LegendsOfSpeed:AddButton({
+    Title = "Hiru Hub",
+    Description = "No Key",
+    Callback = function()
+        repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGames/main/QuestGames.lua"))()
+    end
+})    tabs.LegendsOfSpeed:AddButton({
     Title = "Itzperson.ru",
     Description = "No Key",
     Callback = function()
@@ -5061,6 +5088,13 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/verified/dca3e69649ed1
 
 
     tabs.NinjaLegends:AddButton({
+    Title = "Hiru Hub",
+    Description = "No Key",
+    Callback = function()
+        repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGames/main/QuestGames.lua"))()
+    end
+})    tabs.NinjaLegends:AddButton({
     Title = "Zepsyy",
     Description = "No Key",
     Callback = function()
@@ -5398,6 +5432,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Zepsyy2/asd/main/Ninj
 
 
     tabs.BuildABoatForTreasure:AddButton({
+    Title = "Hiru Hub",
+    Description = "No Key",
+    Callback = function()
+        repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGames/main/QuestGames.lua"))()
+    end
+})    tabs.BuildABoatForTreasure:AddButton({
     Title = "LDS Hub",
     Description = "No Key",
     Callback = function()
