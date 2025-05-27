@@ -165,6 +165,7 @@ tabs.UpdateScript:AddParagraph({
 [+] Add some more scripts.
 [+] Add a sound when the script is loaded.
 [+] Added warning message that script may take a long time to load.
+[+] Infinite zoom will not be affected by scripts.
 [=] Correct the spelling of some words.
 [=] Instead of Notification loading is loading...... when loading is done, change it to loading.... when loading is complete.
 ]]
@@ -622,20 +623,37 @@ end)
 
 
 
--- 🌌 Infinite Zoom Toggle
-local defaultMaxZoom = player.CameraMaxZoomDistance
+-- 🌌 Infinite Zoom Toggle với chống ghi đè
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
 
+local defaultMaxZoom = player.CameraMaxZoomDistance
+local forceZoom = false
+
+-- Bảo vệ: luôn giữ giá trị khi bật Infinite Zoom
+task.spawn(function()
+	while true do
+		if forceZoom then
+			player.CameraMaxZoomDistance = math.huge
+		end
+		task.wait(0.5) -- kiểm tra mỗi 0.5s
+	end
+end)
+
+-- Toggle UI (sử dụng framework của bạn)
 Misc:AddToggle("unlimited_zoom_toggle", {
-    Title = "Infinite Zoom",
-    Default = true,
-    Callback = function(state)
-        if state then
-            player.CameraMaxZoomDistance = math.huge
-        else
-            player.CameraMaxZoomDistance = defaultMaxZoom
-        end
-    end
+	Title = "Infinite Zoom",
+	Default = true,
+	Callback = function(state)
+		forceZoom = state
+		if state then
+			player.CameraMaxZoomDistance = math.huge
+		else
+			player.CameraMaxZoomDistance = defaultMaxZoom
+		end
+	end
 })
+
 
 
 
@@ -3412,9 +3430,9 @@ tabs.Petgo:AddButton({
     Title = "Skull Hub Auto Bond",
     Description = "Need Key",
     Callback = function()
-        getgenv().Farm_Bonds = true
-getgenv().Auto_Execute = true
-loadstring(game:HttpGet("https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua"))()
+        Farm_Bonds = true
+Auto_Execute = true
+loadstring(game:HttpGet('https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua'))()
     end
 })    tabs.Deedrails:AddButton({
     Title = "Skull Hub",
