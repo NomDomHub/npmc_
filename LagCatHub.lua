@@ -117,6 +117,7 @@ local tabs = {
     BedWars = window:AddTab({ Title = "BedWars" }),
     BuildABoatForTreasure = window:AddTab({ Title = "Build A Boat For Treasure" }), 
     PiggyPIG = window:AddTab({ Title = "Piggy PIG" }),
+    BlockSpin = window:AddTab({ Title = "Block Spin" }),
     Misc = window:AddTab({ Title = "Misc" }),
 }
 
@@ -671,6 +672,34 @@ Mainbf:AddButton({
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()  
     end
 })    Mainbf:AddButton({
+    Title = "StarryMoon Hub",
+    Description = "No Key",
+    Callback = function()
+        repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game.Players
+repeat task.wait() until game.Players.LocalPlayer
+getgenv().Team = "Marines" -- Can change Marines => Pirates
+loadstring(game:HttpGet("https://power-clock-api.vercel.app/api/clockbloxfruits", true))()
+    end
+})    Mainbf:AddButton({
+    Title = "Madox Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/GoblinKun009/Script/refs/heads/main/MadoxMain", true))() 
+    end
+})    Mainbf:AddButton({
+    Title = "Banana Hub by Chiriku",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Chiriku2013/BananaCatHub/refs/heads/main/BananaCatHub.lua"))()
+    end
+})    Mainbf:AddButton({
+    Title = "Nousigi Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://nousigi.com/loader.lua"))() 
+    end
+})    Mainbf:AddButton({
     Title = "Moondiety",
     Description = "No Key",
     Callback = function()
@@ -804,7 +833,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NewBetaLua/Lilnhan/re
 loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaCrack/KimP/refs/heads/main/MaruHub"))()
     end
 })    Mainbf:AddButton({
-    Title = "Banana Hub Fake",
+    Title = "Banana Hub Fake by KimP",
     Description = "No Key",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/kimprobloxdz/Banana-Free/refs/heads/main/Protected_5609200582002947.lua.txt"))() 
@@ -1693,6 +1722,42 @@ local GrowMain = tabs.Growagarden:AddSection("Main")
 
 
     GrowMain:AddButton({
+    Title = "Kiwii Hub",
+    Description = "No key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader2.lua"))()
+    end
+})    GrowMain:AddButton({
+    Title = "Lunacy Hub",
+    Description = "No key",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/1c1979f776d3e81869cf5f49f91900a7.lua"))()
+    end
+})    GrowMain:AddButton({
+    Title = "H4xScript",
+    Description = "Need key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader2.lua"))()
+    end
+})    GrowMain:AddButton({
+    Title = "Nat Hub",
+    Description = "No key",
+    Callback = function()
+        loadstring(game:HttpGet("https://get.nathub.xyz/loader"))()
+    end
+})    GrowMain:AddButton({
+    Title = "AriFrow Hub",
+    Description = "Need key",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/255ac567ced3dcb9e69aa7e44c423f19.lua"))()
+    end
+})    GrowMain:AddButton({
+    Title = "UB Hub",
+    Description = "Need key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader2.lua"))()
+    end
+})    GrowMain:AddButton({
     Title = "Xycer Hub",
     Description = "Need key",
     Callback = function()
@@ -2353,6 +2418,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/
 
 
     tabs.Fisch:AddButton({
+    Title = "Nousigi Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://nousigi.com/loader.lua"))() 
+    end
+})    tabs.Fisch:AddButton({
     Title = "Nat Hub",
     Description = "No Key",
     Callback = function()
@@ -3506,6 +3577,12 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/74c9ed77af04c6
 
 
     tabs.AnimeRangersX:AddButton({
+    Title = "Nousigi Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://nousigi.com/loader.lua"))() 
+    end
+})    tabs.AnimeRangersX:AddButton({
     Title = "RoyX Hub",
     Description = "No Key",
     Callback = function()
@@ -3573,7 +3650,20 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/74c9ed77af04c6
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/refs/heads/main/solix%20new%20keyui.lua"))()
     end
+})    tabs.AnimeVanguards:AddButton({
+    Title = "Ryk Hub",
+    Description = "Need Key",
+    Callback = function()
+       loadstring(game:HttpGet("https://ryk.bloxteam.com/loader.lua"))()
+    end
+})    tabs.AnimeVanguards:AddButton({
+    Title = "Nousigi Hub",
+    Description = "Need Key",
+    Callback = function()
+          loadstring(game:HttpGet("https://nousigi.com/loader.lua"))() 
+    end
 })
+
 
 
 
@@ -3720,6 +3810,12 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/74c9ed77af04c6
 
 
     tabs.KingLegacy:AddButton({
+    Title = "Hulk u Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet"https://raw.githubusercontent.com/HULKUexe/mobileX/main/FreeScript.lua")() 
+    end
+})    tabs.KingLegacy:AddButton({
     Title = "Hyper Hab Script",
     Description = "No Key",
     Callback = function()
@@ -4022,6 +4118,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGame
 
 
     tabs.DigtoEarths:AddButton({
+    Title = "SETHHHX",
+    Description = "I don't know",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/SETHHHX/.../refs/heads/main/Dig%20to%20Earth's%20CORE!"))()
+    end
+})    tabs.DigtoEarths:AddButton({
     Title = "H4x Scripts",
     Description = "No Key",
     Callback = function()
@@ -4628,6 +4730,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGame
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/totallynothimplayz/Jd/refs/heads/main/Veno%20Hub"))()
     end
+})    tabs.PiggyPIG:AddButton({
+    Title = "Lmp Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/alan11ago/Hub/refs/heads/main/ImpHub.lua'))()
+    end
 })
 
 
@@ -4637,6 +4745,37 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGame
 
 
 
+
+-------[            Block Spin            ]--------
+
+
+
+
+
+
+
+
+
+
+    tabs.BlockSpin:AddButton({
+    Title = "Quatyx Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/xQuartyx/QuartyzScript/main/Loader.lua"))()
+    end
+})    tabs.BlockSpin:AddButton({
+    Title = "Hermanos Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/BlockSpin/blockspin-pvp.lua'))()
+    end
+})    tabs.BlockSpin:AddButton({
+    Title = "Coder Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/StandartCoder/CoderHubNew/main/Loader.lua"))()
+    end
+})
 
 
 
