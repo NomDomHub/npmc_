@@ -13,7 +13,7 @@ game.StarterGui:SetCore("SendNotification", {
 
 
 
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/WedbookScript.lua"))()
 
 
 
