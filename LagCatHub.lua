@@ -1,3 +1,9 @@
+---Lag Cat Hub 
+
+
+
+
+
 game.StarterGui:SetCore("SendNotification", {
      Title = "Lag Cat Hub";
      Text = "Loading........";
@@ -8,7 +14,7 @@ game.StarterGui:SetCore("SendNotification", {
 
 
 
-wait(1)
+
 
 
 ----- Load hiệu ứng chạy script
@@ -22,7 +28,6 @@ game.StarterGui:SetCore("SendNotification", {
      Duration = "2";
 })
 
-wait(4.8)
 
 
 -- Tải thư viện Fluent
@@ -65,17 +70,9 @@ local window = Fluent:CreateWindow({
 
 
 local tabs = {
-    PhanMain = window:AddTab({ Title = "--------- Main ---------" }),
-    Announcement = window:AddTab({ Title = "Announcement" }),
-    UpdateScript = window:AddTab({ Title = "Update script" }),
-    PhanChucNang = window:AddTab({ Title = "--------- Fuction ---------" }),
-    Infor = window:AddTab({ Title = "Information", Icon = "info" }), -- ID của icon info
-    Main = window:AddTab({ Title = "Fuction", Icon = "grid" }), -- ID của icon tool
-    Localplayer = window:AddTab({ Title = "Localplayer", Icon = "user" }), -- ID của icon user
-    Joinid = window:AddTab({ Title = "Join Server, Game", Icon = "gamepad" }),
-    Game = window:AddTab({ Title = "Game, User Information", Icon = "clipboard" }),
-    Setting = window:AddTab({ Title = "Setting", Icon = "settings" }),--- ID của icon setting
-    PhanScripts = window:AddTab({ Title = "-------- Scripts --------" }),
+    Infor = window:AddTab({ Title = "Info", Icon = "" }), -- ID của icon info
+    Main = window:AddTab({ Title = "Main" }),
+    Fuction = window:AddTab({ Title = "Fuction" }),
     ScriptPaid = window:AddTab({ Title = "Paid" }),
     Bloxfruit = window:AddTab({ Title = "Blox Fruit" }),
     Growagarden = window:AddTab({ Title = "Grow A Garden" }),
@@ -130,15 +127,16 @@ local tabs = {
 
 
 
+local Announcement = tabs.Main:AddSection("Announcement")
 
 
 
-    tabs.Announcement:AddParagraph({
+    Announcement:AddParagraph({
     Title = "Vn : ",
     Content = "Hiện tại đang Ban Wave làm ơn hạn chế dùng hack."
 })
 
-    tabs.Announcement:AddParagraph({
+    Announcement:AddParagraph({
     Title = "En : ",
     Content = "Currently Band Wave, please limit the use of hacks."
 })
@@ -150,16 +148,27 @@ local tabs = {
 
 
 
-
+local UpdateScript = tabs.Main:AddSection("Update Script")
 
 -----phần update Script 
 
 
 
 
+UpdateScript:AddParagraph({
+    Title = "Update : 37",
+    Content = [[
+[-] Delete all script functions.
+[+] Add some scripts of the games.
+[+] Scripts will load faster when run.
+]]
+})
 
 
-tabs.UpdateScript:AddParagraph({
+
+
+
+UpdateScript:AddParagraph({
     Title = "Update : 36",
     Content = [[
 [+] Add some more scripts.
@@ -175,7 +184,7 @@ tabs.UpdateScript:AddParagraph({
 
 
 
-tabs.UpdateScript:AddParagraph({
+UpdateScript:AddParagraph({
     Title = "Update : 35",
     Content = [[
 [+] Script supports more games.
@@ -231,396 +240,8 @@ Developer:AddParagraph({ Title = "Sus", Content = "Developer" })
 Developer:AddParagraph({ Title = "KhangG", Content = "Helper" })
 
 
-local Fps = tabs.Main:AddSection("Lock Fps")
 
-local selectedFPS = 60
-local isFPSLooping = false
-local fpsLoopThread = nil
-
-Fps:AddInput("FPSInput", {
-    Title = "Enter Fps to Lock",
-    Default = "",
-    Placeholder = "Fps",
-    Numeric = true,
-    Finished = true,
-    Callback = function(value)
-        local num = tonumber(value)
-        if num and num > 0 then
-            selectedFPS = num
-            -- Không có thông báo Fluent:Notify
-        else
-            -- Không có thông báo Fluent:Notify
-        end
-    end
-})
-
-Fps:AddToggle("LockFPSToggle", {
-    Title = "Lock Fps",
-    Default = false,
-    Callback = function(state)
-        if state then
-            if typeof(setfpscap) == "function" then
-                setfpscap(selectedFPS)
-                isFPSLooping = false -- Đảm bảo vòng lặp không chạy nếu setfpscap có
-                if fpsLoopThread and task.cancel then task.cancel(fpsLoopThread) end
-                fpsLoopThread = nil
-            else
-                isFPSLooping = true
-                local interval = 1 / selectedFPS
-
-                fpsLoopThread = task.spawn(function()
-                    local lastTick = tick()
-                    while isFPSLooping do
-                        local now = tick()
-                        local elapsed = now - lastTick
-                        local wait_time = interval - elapsed
-
-                        if wait_time > 0 then
-                            task.wait(wait_time)
-                        end
-
-                        lastTick = tick()
-
-                        -- Thêm một yield nhỏ để tránh lỗi và cho phép dừng thread
-                        if not task.wait(0.001) then
-                            break -- Thread bị hủy
-                        end
-                    end
-                end)
-            end
-        else
-            if typeof(setfpscap) == "function" then
-                setfpscap(999)
-            end
-
-            isFPSLooping = false -- Dừng vòng lặp
-            if fpsLoopThread and task.cancel then task.cancel(fpsLoopThread) end
-            fpsLoopThread = nil
-        end
-    end
-})
-
-
-
-local Player = tabs.Localplayer:AddSection("Player")
-
-Player:AddButton({
-    Title = "Reset Character",
-    Description = "",
-    Callback = function()
-        local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local humanoid = character:FindFirstChildWhichIsA("Humanoid")
-
-if humanoid then
-    humanoid.Health = 0
-end
-    end
-})    Player:AddButton({
-    Title = "Kick Player",
-    Description = "",
-    Callback = function()
-        game.Players.LocalPlayer:Kick("")
-    end
-})    Player:AddButton({
-    Title = "Exit The Game",
-    Description = "",
-    Callback = function()
-        -- Thoát khỏi game
-game:Shutdown()
-
-    end
-})
-
--- 🧍 WalkSpeed & Jump
-local Walkspeed = tabs.Localplayer:AddSection("WalkSpeed")
-local tpwalking = false
-local currentSpeed = 90
-local overrideSpeed = nil
-local heartbeatConnection = nil
-local originalWalkSpeed = 16
-
-local function startTeleportWalk(character)
-    if not character then return end
-    local hum = character:WaitForChild("Humanoid", 5)
-    if not hum then return end
-
-    hum.HealthChanged:Connect(function()
-        local hpPercent = (hum.Health / hum.MaxHealth) * 100
-        if not overrideSpeed then
-            currentSpeed = hpPercent <= 30 and 190 or 90
-        end
-    end)
-
-    if heartbeatConnection then heartbeatConnection:Disconnect() end
-    heartbeatConnection = RunService.Heartbeat:Connect(function(dt)
-        if tpwalking and hum and hum.Parent then
-            local moveDir = hum.MoveDirection
-            if moveDir.Magnitude > 0 then
-                character:TranslateBy(moveDir * currentSpeed * dt)
-            end
-        end
-    end)
-end
-
-Players.LocalPlayer.CharacterAdded:Connect(function(char)
-    if tpwalking then
-        task.wait(1)
-        startTeleportWalk(char)
-    end
-end)
-
-if speaker.Character then
-    startTeleportWalk(speaker.Character)
-end
-
-Walkspeed:AddToggle("tpwalk_toggle", {
-    Title = "Walk speed",
-    Default = false,
-    Callback = function(state)
-        tpwalking = state
-        local char = speaker.Character
-        if char then
-            if tpwalking then
-                startTeleportWalk(char)
-                local hum = char:WaitForChild("Humanoid", 5)
-                if hum then hum.WalkSpeed = currentSpeed end
-            else
-                local hum = char:WaitForChild("Humanoid", 5)
-                if hum then hum.WalkSpeed = originalWalkSpeed end
-                if heartbeatConnection then heartbeatConnection:Disconnect() end
-            end
-        end
-    end
-})
-
-Walkspeed:AddInput("speed_input", {
-    Title = "Speed",
-    Placeholder = "Enter speed",
-    Numeric = true,
-    Finished = true,
-    Callback = function(value)
-        local speed = tonumber(value)
-        if speed then
-            overrideSpeed = speed
-            currentSpeed = speed
-        else
-            overrideSpeed = nil
-        end
-    end
-})
-
--- 🦘 Jump Settings
-local Players = game:GetService("Players")
-local UserInputService = game:GetService("UserInputService")
-
-local LocalPlayer = Players.LocalPlayer
-local Jump = tabs.Localplayer:AddSection("Jump")
-
-local infiniteJumpEnabled = false
-local customJumpPowerEnabled = false
-local jumpPowerOverride = nil
-
--- Infinite Jump Handler
-UserInputService.JumpRequest:Connect(function()
-    if infiniteJumpEnabled then
-        local char = LocalPlayer.Character
-        if char then
-            local humanoid = char:FindFirstChildOfClass("Humanoid")
-            if humanoid then
-                humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-                humanoid.Jump = true
-            end
-        end
-    end
-end)
-
--- Infinite Jump Toggle
-Jump:AddToggle("infinite_jump", {
-    Title = "Infiniti Jump",
-    Default = false,
-    Callback = function(state)
-        infiniteJumpEnabled = state
-    end
-})
-
--- High Jump Toggle
-Jump:AddToggle("custom_jump_toggle", {
-    Title = "High Jump",
-    Default = false,
-    Callback = function(state)
-        customJumpPowerEnabled = state
-        local humanoid = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-        if humanoid then
-            humanoid.JumpPower = state and (jumpPowerOverride or 50) or 50
-        end
-    end
-})
-
--- Jump Power Input
-Jump:AddInput("jump_power", {
-    Title = "Jump Power",
-    Placeholder = "Enter jump height",
-    Numeric = true,
-    Finished = true,
-    Callback = function(value)
-        jumpPowerOverride = tonumber(value)
-        local humanoid = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-        if humanoid and customJumpPowerEnabled then
-            humanoid.JumpPower = jumpPowerOverride or 50
-        end
-    end
-})
-
--- Optional: Auto apply custom JumpPower on respawn
-LocalPlayer.CharacterAdded:Connect(function(char)
-    char:WaitForChild("Humanoid")
-    if customJumpPowerEnabled and jumpPowerOverride then
-        char.Humanoid.JumpPower = jumpPowerOverride
-    end
-end)
-
-
--- 🚷 NoClip
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local LocalPlayer = Players.LocalPlayer
-
-local Noclip = tabs.Localplayer:AddSection("No Clip")
-local NoClip = false
-local NoClipConnection
-
-Noclip:AddToggle("NoClip", {
-    Title = "NoClip",
-    Default = false,
-    Callback = function(state)
-        NoClip = state
-
-        if NoClip then
-            -- Bắt đầu NoClip
-            NoClipConnection = RunService.Stepped:Connect(function()
-                local char = LocalPlayer.Character
-                if char then
-                    for _, part in ipairs(char:GetDescendants()) do
-                        if part:IsA("BasePart") and part.CanCollide == true then
-                            part.CanCollide = false
-                        end
-                    end
-                end
-            end)
-        else
-            -- Tắt NoClip
-            if NoClipConnection then
-                NoClipConnection:Disconnect()
-                NoClipConnection = nil
-            end
-
-            local char = LocalPlayer.Character
-            if char then
-                for _, part in ipairs(char:GetDescendants()) do
-                    if part:IsA("BasePart") then
-                        part.CanCollide = true
-                    end
-                end
-            end
-        end
-    end
-})
-
-
-
-local Misc = tabs.Localplayer:AddSection("Misc")
-
-local Lighting = game:GetService("Lighting")
-local RunService = game:GetService("RunService")
-
--- Biến kiểm soát trạng thái bật tắt
-local isFullBright = false
-local fullBrightConnection
-
--- Toggle Full Bright
-Misc:AddToggle("FullBrightToggle", {
-    Title = "Full Bright",
-    Default = false,
-    Callback = function(state)
-        isFullBright = state
-
-        if state then
-            -- Kết nối hàm FullBright nếu chưa kết nối
-            if not fullBrightConnection then
-                fullBrightConnection = RunService.RenderStepped:Connect(function()
-                    if isFullBright then
-                        Lighting.Brightness = 10
-                        Lighting.ClockTime = 12
-                        Lighting.FogEnd = 1e10
-                        Lighting.GlobalShadows = false
-                    end
-                end)
-            end
-        else
-            -- Ngắt kết nối nếu đang kết nối
-            if fullBrightConnection then
-                fullBrightConnection:Disconnect()
-                fullBrightConnection = nil
-            end
-
-            -- Khôi phục lại Lighting mặc định
-            Lighting.Brightness = 2
-            Lighting.ClockTime = 14
-            Lighting.FogEnd = 1000
-            Lighting.GlobalShadows = true
-        end
-    end
-})
-
-
-
--- Biến để lưu trạng thái của toggle
-local isTeleportEnabled = false  
-
--- Thêm toggle vào tab Misc
-Misc:AddToggle("TeleportToggle", {
-    Title = "Click to teleport",
-    Description = "Only use when using PC.",
-    Default = false,
-    Callback = function(state)
-        isTeleportEnabled = state
-        print("NomDom Hub On Top")
-    end
-})
-
--- Lấy đối tượng LocalPlayer và Mouse
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
-
--- Biến toàn cục để lưu HumanoidRootPart mới nhất
-local humanoidRootPart = nil
-
--- Hàm cập nhật humanoidRootPart khi nhân vật được tạo lại
-local function updateCharacter(character)
-    humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-end
-
--- Gọi cập nhật ngay lập tức nếu nhân vật đã tồn tại
-if player.Character then
-    updateCharacter(player.Character)
-end
-
--- Lắng nghe sự kiện hồi sinh nhân vật
-player.CharacterAdded:Connect(updateCharacter)
-
--- Hàm xử lý khi click chuột trái
-mouse.Button1Down:Connect(function()
-    if isTeleportEnabled and humanoidRootPart then
-        local clickPosition = mouse.Hit.p
-        humanoidRootPart.CFrame = CFrame.new(clickPosition + Vector3.new(0, 2, 0))
-    end
-end)
-
-
-
-
-
+local FuctionFuction = tabs.Fuction:AddSection("Fuction")
 
 
 -- 🌌 Infinite Zoom Toggle với chống ghi đè
@@ -641,7 +262,7 @@ task.spawn(function()
 end)
 
 -- Toggle UI (sử dụng framework của bạn)
-Misc:AddToggle("unlimited_zoom_toggle", {
+FuctionFuction:AddToggle("unlimited_zoom_toggle", {
 	Title = "Infinite Zoom",
 	Default = true,
 	Callback = function(state)
@@ -662,531 +283,15 @@ Misc:AddToggle("unlimited_zoom_toggle", {
 
 
 
-local Players = game:GetService("Players")
-local UserInputService = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local player = Players.LocalPlayer
 
-Misc:AddButton({
-    Title = "Unlock Camera",
-    Description = "Only use when camera is locked.",
-    Callback = function()
-        Players.LocalPlayer.CameraMode = Enum.CameraMode.Classic
-    end
-})
 
 
 
 
--- 🖱️ Unlock Mouse Button (giữ nguyên hàm như bạn viết)
-Misc:AddButton({
-    Title = "Unlock Mouse",
-    Description = "Only use when using PC and mouse is locked.",
-    Callback = function()
-        -- Đặt đoạn mã này trong StarterPlayerScripts
-        UserInputService.MouseBehavior = Enum.MouseBehavior.Default
 
-        RunService.RenderStepped:Connect(function()
-            -- RenderStepped is running
-        end)
-    end
-})
 
 
 
-
-
-
-
-
-
-
-local Joinid = tabs.Joinid:AddSection("Join ID")
-
-
-
-
--- Tạo ô nhập
-local jobInput = Joinid:AddInput("Input", {
-    Title = "Job ID",
-    Default = "",
-    Placeholder = "Paste Job ID Here",
-    Numeric = false,
-    Finished = false,
-    Callback = function(Value)
-        _G.Job = Value
-    end
-})
-
--- Nút Join xử lý thông minh
-Joinid:AddButton({
-    Title = "Join",
-    Description = "",
-    Callback = function()
-        local text = _G.Job or ""
-        if text ~= "" then
-            pcall(function()
-                if text:lower() == "teleport" then
-                    local function getServerID()
-                        return "dffebadf-3464-4ab7-af0e-b10499120fa3" -- Thay bằng JobId hợp lệ nếu có
-                    end
-                    local serverID = getServerID()
-                    if serverID then
-                        game:GetService("TeleportService"):TeleportToPlaceInstance(2753915549, serverID, game.Players.LocalPlayer)
-                    end
-
-                elseif text:match("TeleportService") then
-                    loadstring(text)()
-
-                elseif text:match("InvokeServer") then
-                    loadstring(text)()
-
-                elseif text:match("%d+%.%d+%.%d+%.%d+") and text:match("TeleportService") then
-                    loadstring(text)()
-                end
-            end)
-
-            _G.Job = ""
-            if jobInput and jobInput.SetValue then
-                jobInput:SetValue("")
-            end
-        end
-    end
-})
-
--- Nút Clear input
-Joinid:AddButton({
-    Title = "Clear",
-    Description = "",
-    Callback = function()
-        _G.Job = ""
-        if jobInput and jobInput.SetValue then
-            jobInput:SetValue("")
-        end
-    end
-})
-
-
-
-
-
-Joinid:AddButton({
-    Title="Copy Job ID",
-    Description="",
-    Callback=function()
-        setclipboard(tostring(game.JobId))
-    end
-})
-local Toggle = tabs.Joinid:AddToggle("MyToggle", {Title="Spam Tham Gia Job ID", Default=false })
-Toggle:OnChanged(function(Value)
-_G.Join=Value
-    end)
-    spawn(function()
-while wait() do
-if _G.Join then
-game:GetService("TeleportService"):TeleportToPlaceInstance(game.placeId,_G.Job, game.Players.LocalPlayer)
-end
-end
-end)
-
-
-Joinid:AddButton({
-Title = "Rejoin Server",
-Description = "",
-Callback = function()
-    game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
-end
-})
-
--- Tạo section
-local JoinGameSection = tabs.Joinid:AddSection("Join Game")
-
-local TeleportService = game:GetService("TeleportService")
-local Players = game:GetService("Players")
-
--- Danh sách game
-local gameList = {
-    ["Blox Fruits"] = 2753915549,
-    ["Grow A Garden"] = 126884695634066,
-    ["Deed Rails"] = 116495829188952,
-    ["Bubble Rubber Simulator"] = 85896571713843,
-    ["Blue Lock"] = 18668065416,
-    ["Arise Crossover"] = 87039211657390,
-    ["Forsaken"] = 85896571713843,
-    ["Blade Ball"] = 13772394625,
-    ["Fish"] = 16732694052,
-    ["Pet Go"] = 18901165922,
-    ["Volleyball Legends"] = 73956553001240,
-    ["Basketball"] = 130739873848552,
-    ["Mm2"] = 142823291,
-    ["The Strongest Battlegrounds"] = 10449761463,
-    ["Cộng Đồng Việt Nam"] = 18192562963,
-    ["Anime Saga"] = 17850641257,
-    ["Anime Rangers"] = 72829404259339,
-    ["Anime Vanguards"] = 16146832113,
-    ["Anime Last Stand"] = 12886143095,
-    ["Attack On Titan Revolution"] = 13379208636,
-    ["Door"] = 6516141723,
-    ["King Legacy"] = 4520749081,
-    ["Rivals"] = 17625359962,
-    ["Brookhaven"] = 4924922222,
-    ["Meme Sea"] = 10260193230,
-    ["Gym League"] = 17450551531,
-    ["Evade"] = 9872472334,
-    ["Bee Swarm Simulator"] = 1537690962,
-}
-
-
-
-
--- Biến lưu game đã chọn
-local selectedGame = nil
-
--- Dropdown chọn game
-JoinGameSection:AddDropdown("Chọn Game", {
-    Title = "Choose a game",
-    Values = (function()
-        local names = {}
-        for name in pairs(gameList) do
-            table.insert(names, name)
-        end
-        table.sort(names)
-        return names
-    end)(),
-    Callback = function(value)
-        selectedGame = gameList[value]
-    end
-})
-
--- Nút Join Game
-JoinGameSection:AddButton({
-    Title = "Join game",
-    Description = "",
-    Callback = function()
-        if selectedGame then
-            TeleportService:Teleport(selectedGame, Players.LocalPlayer)
-        end
-    end
-})
-
-
-
-
-
-
-local Hop = tabs.Joinid:AddSection("Hop")
-
-Hop:AddButton({
-Title = "Hop Low Server",
-Description = "",
-Callback = function()
-    getgenv().AutoTeleport = true
-    getgenv().DontTeleportTheSameNumber = true 
-    getgenv().CopytoClipboard = false
-    if not game:IsLoaded() then
-        print("Hop Low Server")
-    end
-    local maxplayers = math.huge
-    local serversmaxplayer;
-    local goodserver;
-    local gamelink = "https://games.roblox.com/v1/games/" .. game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100" 
-    function serversearch()
-        for _, v in pairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync(gamelink)).data) do
-            if type(v) == "table" and v.playing ~= nil and maxplayers > v.playing then
-                serversmaxplayer = v.maxPlayers
-                maxplayers = v.playing
-                goodserver = v.id
-            end
-        end       
-    end
-    function getservers()
-        serversearch()
-        for i,v in pairs(game:GetService("HttpService"):JSONDecode(game:HttpGetAsync(gamelink))) do
-            if i == "nextPageCursor" then
-                if gamelink:find("&cursor=") then
-                    local a = gamelink:find("&cursor=")
-                    local b = gamelink:sub(a)
-                    gamelink = gamelink:gsub(b, "")
-                end
-                gamelink = gamelink .. "&cursor=" ..v
-                getservers()
-            end
-        end
-    end 
-    getservers()
-    if AutoTeleport then
-        if DontTeleportTheSameNumber then 
-            if #game:GetService("Players"):GetPlayers() - 4  == maxplayers then
-                return warn("It has same number of players (except you)")
-            elseif goodserver == game.JobId then
-                return warn("Your current server is the most empty server atm") 
-            end
-        end
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, goodserver)
-    end
-end
-})
-
-Hop:AddButton({
-Title = "Hop Server",
-Description = "",
-Callback = function()
-    local HttpService = game:GetService("HttpService")
-    local TPS = game:GetService("TeleportService")
-    
-    -- Kiểm tra nếu game có thể gửi request HTTP
-    local success, response = pcall(function()
-        return game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100")
-    end)
-
-    if not success then
-        print("Hop Failed")
-        return
-    end
-    
-    local Servers = HttpService:JSONDecode(response).data
-    local AvailableServers = {}
-
-    for _, v in pairs(Servers) do
-        if v.playing < v.maxPlayers and v.id ~= game.JobId then
-            table.insert(AvailableServers, v.id)
-        end
-    end
-
-    if #AvailableServers > 0 then
-        local RandomServer = AvailableServers[math.random(1, #AvailableServers)]
-        
-        -- Kiểm tra nếu TPS có thể teleport
-        local teleportSuccess, teleportError = pcall(function()
-            TPS:TeleportToPlaceInstance(game.PlaceId, RandomServer)
-        end)
-
-        if not teleportSuccess then
-            print("Lỗi Teleport: " .. teleportError)
-        end
-    else
-        print("Không có máy chủ")
-    end
-end
-})
-
-
-
-
-
-
-
-
-
--------[  Hiển thị thông tin   ]---
-
-
-
-
-
-
-
-
-
-
-
--- 🌐 Dịch vụ cần thiết
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local LocalizationService = game:GetService("LocalizationService")
-
-local LocalPlayer = Players.LocalPlayer
-
--- === 1. Player Information ===
-local sectionPlayer = tabs.Game:AddSection("Player Information")
-
-sectionPlayer:AddParagraph({
-    Title = "Username",
-    Content = LocalPlayer.Name or "N/A"
-})
-
-sectionPlayer:AddParagraph({
-    Title = "Display Name",
-    Content = LocalPlayer.DisplayName or "N/A"
-})
-
--- 🌍 Bảng mã quốc gia → tên quốc gia
-local countryMap = {
-    VN = "Vietnam",
-    TH = "Thailand",
-    ID = "Indonesia",
-    PH = "Philippines",
-    MY = "Malaysia",
-    US = "United States",
-    BR = "Brazil",
-    KR = "South Korea",
-    JP = "Japan",
-    DE = "Germany",
-    FR = "France",
-    RU = "Russia"
-}
-
--- 🛰️ Lấy mã quốc gia bằng LocalizationService
-if not getgenv().countryRegionCode then
-    local success, regionCode = pcall(function()
-        return LocalizationService:GetCountryRegionForPlayerAsync(LocalPlayer)
-    end)
-    getgenv().countryRegionCode = success and regionCode or "Unknown"
-end
-
--- 🌐 Đổi mã quốc gia sang tên đầy đủ
-local fullCountryName = countryMap[getgenv().countryRegionCode] or "Unknown"
-
--- 📌 Hiển thị tên quốc gia
-sectionPlayer:AddParagraph({
-    Title = "Country",
-    Content = fullCountryName
-})
-
--- === 2. Server Info ===
-local sectionServer = tabs.Game:AddSection("Server")
-
-local OSTimeParagraph = sectionServer:AddParagraph({
-    Title = "Time Zone",
-    Content = ""
-})
-
-local ServerTimeParagraph = sectionServer:AddParagraph({
-    Title = "Time",
-    Content = ""
-})
-
-local FPSParagraph = sectionServer:AddParagraph({
-    Title = "FPS",
-    Content = ""
-})
-
--- ⏰ Cập nhật thời gian hệ thống kèm mã quốc gia
-local function UpdateOS()
-    local date = os.date("*t")
-    local hour = date.hour
-    local ampm = hour < 12 and "AM" or "PM"
-    local formattedTime = string.format("%02i:%02i:%02i %s", ((hour - 1) % 12) + 1, date.min, date.sec, ampm)
-    local formattedDate = string.format("%02d/%02d/%04d", date.day, date.month, date.year)
-
-    OSTimeParagraph:SetDesc(formattedDate .. " - " .. formattedTime .. " [ " .. getgenv().countryRegionCode .. " ]")
-end
-
--- 🕹️ Cập nhật thời gian trong game
-local function UpdateGameTime()
-    local gameTime = math.floor(workspace.DistributedGameTime + 0.5)
-    local hours = math.floor(gameTime / 3600) % 24
-    local minutes = math.floor(gameTime / 60) % 60
-    local seconds = gameTime % 60
-    ServerTimeParagraph:SetDesc(hours .. " Hour (h) " .. minutes .. " Minute (m) " .. seconds .. " Second (s)")
-end
-
--- 🎮 Cập nhật FPS
-local lastTick = tick()
-local frameCount = 0
-RunService.RenderStepped:Connect(function()
-    frameCount += 1
-    local now = tick()
-    if now - lastTick >= 1 then
-        lastTick = now
-        FPSParagraph:SetDesc(frameCount .. " FPS")
-        frameCount = 0
-    end
-end)
-
--- 🔁 Cập nhật mỗi giây
-task.spawn(function()
-    while true do
-        UpdateOS()
-        UpdateGameTime()
-        task.wait(1)
-    end
-end)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- === 2. Executor ===
-local sectionExecute = tabs.Game:AddSection("Executor")
-
-local executor = "Unknown"
-if syn then
-    executor = "Synapse X"
-elseif KRNL_LOADED then
-    executor = "KRNL"
-elseif fluxus then
-    executor = "Fluxus"
-elseif getexecutorname then
-    local success, execName = pcall(getexecutorname)
-    if success and type(execName) == "string" then
-        executor = execName
-    end
-end
-
-sectionExecute:AddParagraph({
-    Title = "Use Client",
-    Content = executor
-})
-
-local execStatus = (executor == "Xeno" or executor:lower():find("solara")) and "May Error" or "Working"
-sectionExecute:AddParagraph({
-    Title = "Status",
-    Content = execStatus
-})
-
--- === 3. Device Information ===
-local sectionDevice = tabs.Game:AddSection("Device Information")
-
-local deviceType = UserInputService.TouchEnabled and "Mobile"
-    or (UserInputService.KeyboardEnabled and not UserInputService.GamepadEnabled and "PC")
-    or "Console"
-
-sectionDevice:AddParagraph({
-    Title = "Device Type",
-    Content = deviceType
-})
-
--- === 4. Game Information ===
-local sectionGame = tabs.Game:AddSection("Game Information")
-
--- Đảm bảo game đã load trước khi gọi GetProductInfo
-if not game:IsLoaded() then
-    game.Loaded:Wait()
-end
-
-local gameName = "Unknown"
-pcall(function()
-    local info = MarketplaceService:GetProductInfo(game.PlaceId)
-    if info and info.Name then
-        gameName = info.Name
-    end
-end)
-
-sectionGame:AddParagraph({
-    Title = "Game Name",
-    Content = gameName
-})
-
-sectionGame:AddParagraph({
-    Title = "Game ID (PlaceId)",
-    Content = tostring(game.PlaceId)
-})
-
-sectionGame:AddParagraph({
-    Title = "Server ID",
-    Content = game.JobId or "N/A"
-})
 
 
 
@@ -2588,6 +1693,12 @@ local GrowMain = tabs.Growagarden:AddSection("Main")
 
 
     GrowMain:AddButton({
+    Title = "Xycer Hub",
+    Description = "Need key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/GRPGaming/Key-System/refs/heads/Xycer-Hub-Script/GAG3"))()
+    end
+})    GrowMain:AddButton({
     Title = "SkillyBeta Hub",
     Description = "Need key",
     Callback = function()
@@ -5618,199 +4729,6 @@ Fixlag:AddButton({
 
 
 
-local Screen = tabs.Setting:AddSection("Screen")
-
-local Lighting = game:GetService("Lighting")
-local RunService = game:GetService("RunService")
-
-local Buoi = false
-local blur = Instance.new("BlurEffect")
-blur.Size = 0
-blur.Parent = Lighting
-
-Screen:AddToggle("BuoiToggle", {
-    Title = "Blurry Screen",
-    Default = false,
-    Callback = function(state)
-        Buoi = state
-    end
-})
-
--- Liên tục áp dụng hiệu ứng
-spawn(function()
-    while task.wait() do
-        if Buoi then
-            blur.Size = 30
-        else
-            blur.Size = 0
-        end
-    end
-end)
-local Buoi = false
-
-Screen:AddToggle("BuoiToggle", {
-    Title = "White Screen", -- Tên hiển thị trong UI
-    Default = false,
-    Callback = function(state)
-        Buoi = state
-    end
-})
-
--- Chạy ẩn để liên tục kiểm tra trạng thái
-spawn(function()
-    while task.wait() do
-        game:GetService("RunService"):Set3dRenderingEnabled(not Buoi)
-    end
-end)
-
-local Players = game:GetService("Players")
-local player = Players.LocalPlayer
-local PlayerGui = player:WaitForChild("PlayerGui")
-
-local Buoi = false
-
--- Tạo ScreenGui + Frame đen nếu chưa có
-local gui = Instance.new("ScreenGui")
-gui.Name = "BuoiOverlay"
-gui.ResetOnSpawn = false
-gui.IgnoreGuiInset = true
-gui.Parent = PlayerGui
-
-local blackOverlay = Instance.new("Frame")
-blackOverlay.Size = UDim2.new(1, 0, 1, 0)  -- Lấp đầy toàn bộ màn hình
-blackOverlay.BackgroundColor3 = Color3.new(0, 0, 0)  -- Màu đen
-blackOverlay.BackgroundTransparency = 0  -- Không trong suốt, đen hoàn toàn
-blackOverlay.Visible = false  -- Mặc định là không hiển thị
-blackOverlay.Parent = gui
-
--- Toggle
-Screen:AddToggle("BuoiToggle", {
-    Title = "Black Screen",
-    Default = false,
-    Callback = function(state)
-        Buoi = state
-        blackOverlay.Visible = state  -- Hiển thị hoặc ẩn màn hình đen
-    end
-})
-
-local Game = tabs.Setting:AddSection("Game")
-
--- Biến URL script chính
-local ScriptURL = "https://raw.githubusercontent.com/TDDuym500/NomDom/refs/heads/main/NomDomHub.lua"
-local AutoLoadEnabled = false
-
--- Thêm Toggle vào UI
-Game:AddToggle("Enable Auto Load Script", {
-    Title = "Auto Load Script",
-    Default = false,
-    Callback = function(state)
-        AutoLoadEnabled = state
-        if AutoLoadEnabled then
-            -- Nếu bật toggle thì tải và chạy script
-            pcall(function()
-                local response = game:HttpGet(ScriptURL)
-                if response then
-                    loadstring(response)()
-                else
-                    warn("Không thể tải script từ URL.")
-                end
-            end)
-
-            -- Đảm bảo script tiếp tục chạy khi teleport server/game
-            local queue = queue_on_teleport or (syn and syn.queue_on_teleport)
-            if queue then
-                queue(("loadstring(game:HttpGet('%s'))()"):format(ScriptURL))
-            end
-        end
-    end
-})
-
-
-
-
-
--- Lấy đối tượng LocalPlayer và TeleportService
-local LocalPlayer = game.Players.LocalPlayer
-local TeleportService = game:GetService("TeleportService")
-
--- Biến trạng thái cho toggle
-local AutoRejoinEnabled = false  -- Mặc định là tắt
-
--- Hàm tự động teleport khi bị kick hoặc mất kết nối
-local function autoRejoin()
-    -- Lắng nghe sự kiện teleport
-    LocalPlayer.OnTeleport:Connect(function(status)
-        if AutoRejoinEnabled then  -- Nếu tính năng tự động rejoin bật
-            if status == Enum.TeleportState.Failed then
-                -- Sau khi thất bại, teleport lại vào game
-                TeleportService:Teleport(game.PlaceId, LocalPlayer)
-            end
-        end
-    end)
-
-    -- Kết nối sự kiện OnKick để tự động teleport người chơi khi bị kick
-    LocalPlayer.OnKick:Connect(function(reason)
-        if AutoRejoinEnabled then  -- Nếu tính năng tự động rejoin bật
-            -- Sau khi bị kick, teleport lại vào game
-            TeleportService:Teleport(game.PlaceId, LocalPlayer)
-        end
-    end)
-end
-
--- Thêm toggle vào UI
-Game:AddToggle("Enable Auto Rejoin", {
-    Title = "Auto Rejoin",  -- Tiêu đề của toggle
-    Default = false,  -- Mặc định là tắt
-    Callback = function(state)
-        AutoRejoinEnabled = state  -- Cập nhật trạng thái của toggle (true/false)
-    end
-})
-
-
-
-local Anti = tabs.Setting:AddSection("Anti")
-
--- Thêm toggle vào UI
-Anti:AddToggle("Antiband", {
-    Title = "Anti Band",  -- Tiêu đề của toggle
-    Default = true,  -- Mặc định là bật
-    Callback = function(state)
-        -- Có thể thêm mã tùy chỉnh khi bật/tắt tính năng Anti Band ở đây
-    end
-})
-
--- Anti AFK
-local isAntiAFKEnabled = false
-Anti:AddToggle("AntiAFK", {  -- Đổi tên để tránh trùng với các toggle khác
-    Title = "Anti AFK",  -- Tiêu đề của toggle
-    Default = false,  -- Mặc định là tắt
-    Callback = function(state)
-        isAntiAFKEnabled = state
-
-        if state then
-            -- Nếu toggle bật, bắt đầu mô phỏng click chuột
-            local VirtualUser = game:GetService("VirtualUser")
-
-            -- Mô phỏng click chuột mỗi phút
-            spawn(function()
-                while isAntiAFKEnabled do
-                    wait(60) -- Chờ 1 phút
-                    VirtualUser:CaptureController()
-
-                    -- Mô phỏng click chuột phải
-                    VirtualUser:ClickButton2(Vector2.new(0, 0))
-
-                    -- Mô phỏng click chuột trái nhanh
-                    VirtualUser:ClickButton1(Vector2.new(0, 0))
-                end
-            end)
-        end
-    end
-})
-
-
-
-
 
 
 
@@ -5903,81 +4821,6 @@ game.StarterGui:SetCore("SendNotification", {
 
 
 
--- Thông báo chào người chơi
-Fluent:Notify({
-    Title = "Welcome, " .. game.Players.LocalPlayer.Name,
-    Content = "Use script fun",
-    Duration = 5
-})
 
-
-
-
-
-wait(1)
-
-
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/WedbookScript.lua"))()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/NomDomHub/refs/heads/main/NotifyBloxFruit.lua"))()
-
-
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
--- Danh sách user được phép chạy script
-local allowedUsers = {
-    ["Boptrithuc"] = true,
-    ["boptrithuc01"] = true,
-    ["acctesthacktuviet"] = true,
-    ["noxeldp"] = true,
-}
-
--- Kiểm tra nếu tên người chơi không có trong danh sách thì dừng script
-if not allowedUsers[LocalPlayer.Name] then
-    return -- Không làm gì nếu người chơi không được phép
-end
-
--- Hàm áp dụng Headless + Korblox
-local function ApplyMods(character)
-    task.spawn(function()
-        pcall(function()
-            -- Đợi các bộ phận tồn tại
-            local head = character:WaitForChild("Head", 5)
-            if head then
-                head.Transparency = 1
-                local face = head:FindFirstChild("face")
-                if face then face:Destroy() end
-            end
-
-            local upperLeg = character:WaitForChild("RightUpperLeg", 5)
-            local lowerLeg = character:WaitForChild("RightLowerLeg", 5)
-            local foot = character:WaitForChild("RightFoot", 5)
-
-            if upperLeg then
-                upperLeg.MeshId = "rbxassetid://9598310133"
-                upperLeg.TextureID = "rbxassetid://902843398"
-            end
-            if lowerLeg then
-                lowerLeg.Transparency = 1
-            end
-            if foot then
-                foot.Transparency = 1
-            end
-        end)
-    end)
-end
-
--- Nếu nhân vật đã tồn tại, áp dụng ngay
-if LocalPlayer.Character then
-    ApplyMods(LocalPlayer.Character)
-end
-
--- Lắng nghe khi nhân vật hồi sinh
-LocalPlayer.CharacterAdded:Connect(ApplyMods)
-
-
-
-
-
