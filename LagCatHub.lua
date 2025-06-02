@@ -3,12 +3,16 @@
 
 
 
+------Tải thông báo tự làm
+local ThongBao = loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/Notification.lua"))()
 
-game.StarterGui:SetCore("SendNotification", {
-     Title = "Lag Cat Hub";
-     Text = "Loading........";
-     Icon = "rbxassetid://72597850320651";
-     Duration = "2";
+
+
+
+ThongBao:Notify({
+    Title = "Lag Cat Hub",
+    Content = "Loading.....",
+    Duration = 2
 })
 
 
@@ -21,17 +25,18 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/Loading.lua"))()
 
-game.StarterGui:SetCore("SendNotification", {
-     Title = "Lag Cat Hub";
-     Text = "The script may take up to 10s to 15s to load on some weak devices.";
-     Icon = "rbxassetid://72597850320651";
-     Duration = "2";
+ThongBao:Notify({
+    Title = "Lag Cat",
+    Content = "Wait 10 to 15 for download to complete.",
+    Duration = 2
 })
-
 
 
 -- Tải thư viện Fluent
 local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/TDDuym500/UiHack/refs/heads/main/Fluent"))()
+
+
+
 
 local UserInputService = game:GetService("UserInputService")
 local player = game.Players.LocalPlayer
@@ -118,6 +123,9 @@ local tabs = {
     BuildABoatForTreasure = window:AddTab({ Title = "Build A Boat For Treasure" }), 
     PiggyPIG = window:AddTab({ Title = "Piggy PIG" }),
     BlockSpin = window:AddTab({ Title = "Block Spin" }),
+    TowerofHell = window:AddTab({ Title = "Tower of Hell" }),
+    Lootify = window:AddTab({ Title = "Lootify" }),
+    BreakInStory = window:AddTab({ Title = "Break In Story" }),
     Misc = window:AddTab({ Title = "Misc" }),
 }
 
@@ -152,6 +160,23 @@ local Announcement = tabs.Main:AddSection("Announcement")
 local UpdateScript = tabs.Main:AddSection("Update Script")
 
 -----phần update Script 
+
+
+
+UpdateScript:AddParagraph({
+    Title = "Update : 39",
+    Content = [[
+[+] Add scripts of three games.
+[+] Add some scripts.
+[+] Add question. 
+[=] Remake notification.
+[=] Edit some so it's different but when reloading it's a different script.
+]] 
+})
+
+
+
+
 
 
 
@@ -2269,10 +2294,16 @@ local GrowMain = tabs.Growagarden:AddSection("Main")
 
 
     GrowMain:AddButton({
+    Title = "Etronix Hop Old Server",
+    Description = "No key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/realuerd/obf/refs/heads/main/oldserverjoiner",true))()
+    end
+})    GrowMain:AddButton({
     Title = "Kiwii Hub",
     Description = "No key",
     Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader2.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/KiwiiHub/KiwiiHub/refs/heads/main/aac03d64-6a28-47bc-ab5c-da025a50c4d6-1182317416202641449.lua"))()
     end
 })    GrowMain:AddButton({
     Title = "Lunacy Hub",
@@ -3156,6 +3187,39 @@ tabs.Petgo:AddButton({
 
 
     tabs.Deedrails:AddButton({
+    Title = "Hung Hub 2.0 Auto Bond",
+    Description = "No Key",
+    Callback = function()
+        getgenv().AutoExecute = true
+
+local HttpRequest = (syn and syn.request) or (http and http.request) or request
+
+if not HttpRequest then return end
+
+local success, response = pcall(function()
+    return HttpRequest({
+        Url = "https://hungquan99.xyz/HungHub",
+        Method = "GET",
+        Headers = {
+            ["IsExploit"] = "true"
+        }
+    })
+end)
+
+if success and response and response.Body then
+    local func = loadstring(response.Body)
+    if func then
+        pcall(func)
+    end
+end
+    end
+})    tabs.Deedrails:AddButton({
+    Title = "Lunec Hub",
+    Description = "I don't know",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/LiterallyBacon12/LUNEC-On-Top/refs/heads/main/Official%20Source.lua"))()
+    end
+})    tabs.Deedrails:AddButton({
     Title = "Skull Hub Auto Bond",
     Description = "Need Key",
     Callback = function()
@@ -3722,10 +3786,10 @@ tabs.Volleyball:AddButton({
     Title = "Singma Hub",
     Description = "No Key",
     Callback = function()
-        loadstring(game.HttpGet(game, 'https://raw.githubusercontent.com/Xm2iufas09ijmF/sigma-hub/refs/heads/main/temp.lua'))(
-'Enjoy no key or ads! :)')
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Xm2iufas09ijmF/sigma-hub/refs/heads/main/temp.lua"))()
     end
-})    tabs.Volleyball:AddButton({
+})
+    tabs.Volleyball:AddButton({
     Title = "NS Hub",
     Description = "Need Key",
     Callback = function()
@@ -5330,6 +5394,143 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGame
 
 
 
+
+
+
+-------[            Tower of Hell            ]--------
+
+
+
+
+
+
+
+
+    tabs.TowerofHell:AddButton({
+    Title = "Sasware",
+    Description = "No key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/centerepic/sasware_TowerOfHell/main/TowerOfHell_sw.lua"))()
+    end
+})    tabs.TowerofHell:AddButton({
+    Title = "Sprin Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/dqvh/dqvh/main/SprinHub",true))()
+    end
+})    tabs.TowerofHell:AddButton({
+    Title = "Y Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Luarmor123/YHUB-Community/refs/heads/main/Tower-of-hell.lua"))()
+    end
+})    tabs.TowerofHell:AddButton({
+    Title = "DP Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://coolxplo.github.io/DP-HUB-coolxplo/Tower%20Of%20Hell.lua", true))()
+    end
+})    tabs.TowerofHell:AddButton({
+    Title = "RexTop Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/GearV4/RexTop/main/Gg",true))();
+    end
+})    tabs.TowerofHell:AddButton({
+    Title = "Zeerox Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet'https://raw.githubusercontent.com/RunDTM/ZeeroxHub/main/Loader.lua')()
+    end
+})    tabs.TowerofHell:AddButton({
+    Title = "G Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/2dgeneralspam1/scripts-and-stuff/master/scripts/garfield%20hub", true))()
+    end
+})
+
+
+
+
+
+
+
+
+-------[           Lootify             ]--------
+
+
+
+
+
+
+
+
+
+
+    tabs.Lootify:AddButton({
+    Title = "Ns Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/Loo/refs/heads/main/t"))()
+    end
+})    tabs.Lootify:AddButton({
+    Title = "Fazium Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ZaRdoOx/Fazium-files/main/Loader"))() 
+    end
+})    tabs.Lootify:AddButton({
+    Title = "Lootify by Pancakq",
+    Description = "No Key",
+    Callback = function()
+       loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/edad4ab9a99486e04f3777e3e729e2fb.lua"))() 
+    end
+})
+
+
+
+
+
+
+-------[            Break In Story            ]--------
+
+
+
+
+
+
+
+
+
+
+    tabs.BreakInStory:AddButton({
+    Title = "Roblox Script Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Nikita365/Break-In-Story-/main/Break%20In%20Story%20Hub"))()
+    end
+})    tabs.BreakInStory:AddButton({
+    Title = "X Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Bebo-Mods/XHub/main/HubLoader.lua", true))()
+    end
+})    tabs.BreakInStory:AddButton({
+    Title = "Proxima Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TrixAde/Proxima-Hub/main/Main.lua"))()
+    end
+})
+
+
+
+
+
+
+
+
 -------[            Misc            ]--------
 
 
@@ -5496,17 +5697,20 @@ playSound()
 
 
 
-game.StarterGui:SetCore("SendNotification", {
-     Title = "Lag Cat Hub";
-     Text = "Complete";
-     Icon = "rbxassetid://72597850320651";
-     Duration = "2";
+ThongBao:Notify({
+    Title = "Lag Cat Hub",
+    Content = "Complete",
+    Duration = 2
 })
 
 
 
+----Câu hỏi xàm cak
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/Question.lua"))()
 
 
+------Notify Blox Kid
 
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/NomDomHub/refs/heads/main/NotifyBloxFruit.lua"))()
