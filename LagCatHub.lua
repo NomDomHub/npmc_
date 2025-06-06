@@ -9,14 +9,10 @@ local ThongBao = loadstring(game:HttpGet("https://raw.githubusercontent.com/NomD
 
 
 
-ThongBao:Notify({
-    Title = "Lag Cat Hub",
-    Content = "Loading.....",
-    Duration = 2
-})
 
 
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/Executions.lua"))()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/WedbookScript.lua"))()
 
 
@@ -24,6 +20,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/
 ----- Load hiệu ứng chạy script
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/Loading.lua"))()
+
+
+ThongBao:Notify({
+    Title = "Lag Cat Hub",
+    Content = "Loading.....",
+    Duration = 2
+})
 
 ThongBao:Notify({
     Title = "Lag Cat",
@@ -132,6 +135,7 @@ local tabs = {
 
 
 
+
 ----Chỗ thông báo
 
 
@@ -160,6 +164,22 @@ local Announcement = tabs.Main:AddSection("Announcement")
 local UpdateScript = tabs.Main:AddSection("Update Script")
 
 -----phần update Script 
+
+
+
+
+UpdateScript:AddParagraph({
+    Title = "Update : 40",
+    Content = [[
+[+] Add back some old functions from previous update.
+[+] Add some scripts.
+[-] Delete question.
+[=] Adjust the loading notification display.
+]] 
+})
+
+
+
 
 
 
@@ -582,6 +602,7 @@ Misc:AddToggle("TeleportToggle", {
     Callback = function(state)
         isTeleportEnabled = state
         print("NomDom Hub On Top")
+        
     end
 })
 
@@ -722,7 +743,7 @@ joinIDSection:AddButton({
         if text ~= "" then
             pcall(function()
                 if text:lower() == "teleport" then
-                    local serverID = "dffebadf-3464-4ab7-af0e-b10499120fa3" -- Thay bằng ID thật
+                    local serverID = "" -- Thay bằng ID thật
                     TeleportService:TeleportToPlaceInstance(2753915549, serverID, Players.LocalPlayer)
 
                 elseif text:match("TeleportService") or text:match("InvokeServer") or text:match("%d+%.%d+%.%d+%.%d+") then
@@ -850,6 +871,163 @@ joinGameSection:AddButton({
 
 
 
+local Screen = tabs.Fuction:AddSection("Screen")
+
+local Lighting = game:GetService("Lighting")
+local RunService = game:GetService("RunService")
+
+local Buoi = false
+local blur = Instance.new("BlurEffect")
+blur.Size = 0
+blur.Parent = Lighting
+
+Screen:AddToggle("BuoiToggle", {
+    Title = "Blurry Screen",
+    Default = false,
+    Callback = function(state)
+        Buoi = state
+    end
+})
+
+-- Liên tục áp dụng hiệu ứng
+spawn(function()
+    while task.wait() do
+        if Buoi then
+            blur.Size = 30
+        else
+            blur.Size = 0
+        end
+    end
+end)
+local Buoi = false
+
+Screen:AddToggle("BuoiToggle", {
+    Title = "White Screen", -- Tên hiển thị trong UI
+    Default = false,
+    Callback = function(state)
+        Buoi = state
+    end
+})
+
+-- Chạy ẩn để liên tục kiểm tra trạng thái
+spawn(function()
+    while task.wait() do
+        game:GetService("RunService"):Set3dRenderingEnabled(not Buoi)
+    end
+end)
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local PlayerGui = player:WaitForChild("PlayerGui")
+
+local Buoi = false
+
+-- Tạo ScreenGui + Frame đen nếu chưa có
+local gui = Instance.new("ScreenGui")
+gui.Name = "BuoiOverlay"
+gui.ResetOnSpawn = false
+gui.IgnoreGuiInset = true
+gui.Parent = PlayerGui
+
+local blackOverlay = Instance.new("Frame")
+blackOverlay.Size = UDim2.new(1, 0, 1, 0)  -- Lấp đầy toàn bộ màn hình
+blackOverlay.BackgroundColor3 = Color3.new(0, 0, 0)  -- Màu đen
+blackOverlay.BackgroundTransparency = 0  -- Không trong suốt, đen hoàn toàn
+blackOverlay.Visible = false  -- Mặc định là không hiển thị
+blackOverlay.Parent = gui
+
+-- Toggle
+Screen:AddToggle("BuoiToggle", {
+    Title = "Black Screen",
+    Default = false,
+    Callback = function(state)
+        Buoi = state
+        blackOverlay.Visible = state  -- Hiển thị hoặc ẩn màn hình đen
+    end
+})
+
+local Game = tabs.Fuction:AddSection("Game")
+
+
+
+-- Lấy đối tượng LocalPlayer và TeleportService
+local LocalPlayer = game.Players.LocalPlayer
+local TeleportService = game:GetService("TeleportService")
+
+-- Biến trạng thái cho toggle
+local AutoRejoinEnabled = false  -- Mặc định là tắt
+
+-- Hàm tự động teleport khi bị kick hoặc mất kết nối
+local function autoRejoin()
+    -- Lắng nghe sự kiện teleport
+    LocalPlayer.OnTeleport:Connect(function(status)
+        if AutoRejoinEnabled then  -- Nếu tính năng tự động rejoin bật
+            if status == Enum.TeleportState.Failed then
+                -- Sau khi thất bại, teleport lại vào game
+                TeleportService:Teleport(game.PlaceId, LocalPlayer)
+            end
+        end
+    end)
+
+    -- Kết nối sự kiện OnKick để tự động teleport người chơi khi bị kick
+    LocalPlayer.OnKick:Connect(function(reason)
+        if AutoRejoinEnabled then  -- Nếu tính năng tự động rejoin bật
+            -- Sau khi bị kick, teleport lại vào game
+            TeleportService:Teleport(game.PlaceId, LocalPlayer)
+        end
+    end)
+end
+
+-- Thêm toggle vào UI
+Game:AddToggle("Enable Auto Rejoin", {
+    Title = "Auto Rejoin",  -- Tiêu đề của toggle
+    Default = false,  -- Mặc định là tắt
+    Callback = function(state)
+        AutoRejoinEnabled = state  -- Cập nhật trạng thái của toggle (true/false)
+    end
+})
+
+
+
+local Anti = tabs.Fuction:AddSection("Anti")
+
+-- Thêm toggle vào UI
+Anti:AddToggle("Antiband", {
+    Title = "Anti Band",  -- Tiêu đề của toggle
+    Default = true,  -- Mặc định là bật
+    Callback = function(state)
+        -- Có thể thêm mã tùy chỉnh khi bật/tắt tính năng Anti Band ở đây
+    end
+})
+
+-- Anti AFK
+local isAntiAFKEnabled = false
+Anti:AddToggle("AntiAFK", {  -- Đổi tên để tránh trùng với các toggle khác
+    Title = "Anti AFK",  -- Tiêu đề của toggle
+    Default = false,  -- Mặc định là tắt
+    Callback = function(state)
+        isAntiAFKEnabled = state
+
+        if state then
+            -- Nếu toggle bật, bắt đầu mô phỏng click chuột
+            local VirtualUser = game:GetService("VirtualUser")
+
+            -- Mô phỏng click chuột mỗi phút
+            spawn(function()
+                while isAntiAFKEnabled do
+                    wait(60) -- Chờ 1 phút
+                    VirtualUser:CaptureController()
+
+                    -- Mô phỏng click chuột phải
+                    VirtualUser:ClickButton2(Vector2.new(0, 0))
+
+                    -- Mô phỏng click chuột trái nhanh
+                    VirtualUser:ClickButton1(Vector2.new(0, 0))
+                end
+            end)
+        end
+    end
+})
 
 
 
@@ -2293,7 +2471,33 @@ local GrowMain = tabs.Growagarden:AddSection("Main")
 
 
 
+GrowMain:AddButton({
+    Title = "Maru Hub",
+    Description = "Click to copy script and link getkey",
+    Callback = function()
+        setclipboard([[
+-----Script
+script_key = "YOUR KEY";
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruHub/main/Loader.lua"))()
+
+----Get Key
+https://ninoexe.net/
+        ]])
+    end
+})
     GrowMain:AddButton({
+    Title = "Mozil Hub",
+    Description = "No key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MozilOnTopp/MozilHub/refs/heads/main/GrowaGarden"))()
+    end
+})    GrowMain:AddButton({
+    Title = "Hidden Hub",
+    Description = "Need key",
+    Callback = function()
+        loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/377b162278b27b0a902fd536bac6d1d7.lua"))()
+    end
+})    GrowMain:AddButton({
     Title = "Etronix Hop Old Server",
     Description = "No key",
     Callback = function()
@@ -5368,7 +5572,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaStupid/ExecuteGame
 
 
 
-    tabs.BlockSpin:AddButton({
+      tabs.BlockSpin:AddButton({
+    Title = "Void Hub",
+    Description = "I don't know",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/VoideXlua/VoidHub/refs/heads/main/Void%20Hub"))()
+    end
+})    tabs.BlockSpin:AddButton({
     Title = "Quatyx Hub",
     Description = "Need Key",
     Callback = function()
@@ -5705,9 +5915,6 @@ ThongBao:Notify({
 
 
 
-----Câu hỏi xàm cak
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/Question.lua"))()
 
 
 ------Notify Blox Kid
