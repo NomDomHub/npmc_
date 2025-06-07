@@ -64,7 +64,7 @@ end
 -- Tạo cửa sổ Fluent
 local window = Fluent:CreateWindow({
     Title = isSpecialUser and "Lag Cat Hub [Premium]" or "Lag Cat Hub [Freemium]",
-    SubTitle = "by Sus | https://discord.gg/rGJqKuvW",
+    SubTitle = "by Sus | https://discord.gg/KTG45Zv58j",
     TabWidth = (UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled) and 160 or 190,  -- Mobile: 160, PC: 190
     Theme = "Dark",
     Acrylic = false,
@@ -173,6 +173,7 @@ UpdateScript:AddParagraph({
     Content = [[
 [+] Add back some old functions from previous update.
 [+] Add some scripts.
+[+] Create new discord link.
 [-] Delete question.
 [=] Adjust the loading notification display.
 ]] 
@@ -283,7 +284,7 @@ Community:AddButton({
     Title = "Lag Cat Hub",
     Description = "Discord",
     Callback = function()
-        setclipboard("https://discord.gg/rGJqKuvW")
+        setclipboard("https://discord.gg/KTG45Zv58j")
     end
 })
 
