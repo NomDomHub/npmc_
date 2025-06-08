@@ -146,12 +146,12 @@ local Announcement = tabs.Main:AddSection("Announcement")
 
     Announcement:AddParagraph({
     Title = "Vn : ",
-    Content = "Về quê chơi rồi không update được nữa, tầm tuần sau sẽ có update."
+    Content = "Không biết phải cập nhật những gì."
 })
 
     Announcement:AddParagraph({
     Title = "En : ",
-    Content = "I'm back in countryside so I can't update anymore. Will have an update next week."
+    Content = "Don't know what to update."
 })
 
 
@@ -164,6 +164,18 @@ local Announcement = tabs.Main:AddSection("Announcement")
 local UpdateScript = tabs.Main:AddSection("Update Script")
 
 -----phần update Script 
+
+
+
+UpdateScript:AddParagraph({
+    Title = "Update : 41",
+    Content = [[
+[+] Add some scripts.
+]] 
+})
+
+
+
 
 
 
@@ -2337,7 +2349,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/ref
     end
 })    Autobounty:AddButton({
     Title = "Radiant Hub",
-    Description = "I don't know",
+    Description = "No Key",
     Callback = function()
         getgenv().Config = {
     ["Select Team"] = "Pirate", -- Pirate / Marine
@@ -2364,6 +2376,65 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/ref
     ["Webhook_Url"] = 'put ur webhook here'
 }
 loadstring(game:HttpGet('https://raw.githubusercontent.com/x2RunE/QuynhLaSo1/refs/heads/main/RadiantAutoBounty.lua'))()
+    end
+})    Autobounty:AddButton({
+    Title = "HoHo Hub",
+    Description = "Need Key",
+    Callback = function()
+        script_key = "put_your_key_here";
+
+_G["HoHo Hub Auto Bounty V4"] = {
+    ["Avatar"] = "rbxassetid://8598068647",
+    ["Farm Method"] = "Normal", -- Normal or Gun (really Bad rn)
+    ["Select Team"] = "Pirate", -- Pirate/Marine
+    ["Discord Webhook"] = "",
+    ["Bypass Teleport"] = false, -- not recommend cuz the bypass success rate is low
+    ["Max Level Distance"] = 612, -- 612 is took from wiki but u can change it
+    ["Don't attack friends"] = true,
+    ["Don't attack player have cup"] = false,
+    ["Distance Attack Y"] = 2, -- Shark Race = 0; Another >= 6
+    ["Chat After Kill"] = {
+        ["Active"] = true, -- if u don't want script chat just make it false
+        ["List Chat"] = {"i have a good gaming chair","No skill? Use Hoho hub","How to play this game","im new","your bad"},
+    },
+    ["Yourself"] = {
+        ["Invisible From Ken"] = true,
+        ["No Stun"] = true,
+    },
+    ["SafeZone"] = {Enabled = true, ["Health Left (%)"] = 25, ["Wait Until Heal (%)"] = 80},
+    ["Time Control"] = {
+        ["Max Time Target Player"] = 120,
+    },
+    ["Abilities"] = {
+        ["Auto Click"] = true,
+        ["Melee"] = {
+            Z = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+            X = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+            C = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+        },
+        ["Sword"] = {
+            Z = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+            X = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+        },
+        ["Gun"] = {
+            Z = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+            X = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+        },
+        ["Fruit"] = {
+            Z = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+            X = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+            C = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+            V = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6}, -- don't forget to disable V if u r using zoan fruits
+            F = {Enabled = true, Hold = 0.05, WaitNextSkill = 0.6},
+        },
+    },
+}
+_G.SupperFixLag = true -- eww potato device
+_G["Auto Gacha & Store Fruit"] = true -- more fruits ^^
+_G.UsePortalTeleport = true
+
+_G.loadCustomId = "fac6dbd013c78163f8061ce11b2c1330"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI"))()
     end
 })    Autobounty:AddButton({
     Title = "Hiru Hub",
@@ -2473,6 +2544,48 @@ local GrowMain = tabs.Growagarden:AddSection("Main")
 
 
 GrowMain:AddButton({
+    Title = "Bock Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://bonkhubloader.netlify.app",true))()
+    end
+})    GrowMain:AddButton({
+    Title = "Lumin Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://lumin-hub.lol/loader.lua",true))()
+    end
+})    GrowMain:AddButton({
+    Title = "Depso",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/depthso/Grow-a-Garden/refs/heads/main/autofarm.lua')))()
+    end
+})    GrowMain:AddButton({
+    Title = "Hakariq Garden Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/hakariqScripts/Roslina/refs/heads/main/Ro"))()
+    end
+})    GrowMain:AddButton({
+    Title = "DrRox Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/BrySadW/GrowAGarden/refs/heads/main/GrowAGarden.lua"))()
+    end
+})    GrowMain:AddButton({
+    Title = "Dinga Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Dingarik/Dingarik/refs/heads/main/GrowAGarden"))()
+    end
+})    GrowMain:AddButton({
+    Title = "Rift Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://rifton.top/loader.lua"))()
+    end
+})    GrowMain:AddButton({
     Title = "Maru Hub",
     Description = "Click to copy script and link getkey",
     Callback = function()
@@ -2484,13 +2597,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/xshiba/MaruHub/main/L
 ----Get Key
 https://ninoexe.net/
         ]])
-    end
-})
-    GrowMain:AddButton({
-    Title = "Mozil Hub",
-    Description = "No key",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/MozilOnTopp/MozilHub/refs/heads/main/GrowaGarden"))()
     end
 })    GrowMain:AddButton({
     Title = "Hidden Hub",
@@ -3049,7 +3155,13 @@ tabs.Bluelock:AddButton({
 
 
 
-
+    tabs.Forsaken:AddButton({
+    Title = "Stamina Hub",
+    Description = "I don't know",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/sigmaboy-sigma-boy/sigmaboy-sigma-boy/refs/heads/main/StaminaSettings.ESP.PIDC.raw'))()
+    end
+})
     tabs.Forsaken:AddButton({
     Title = "Vxeze Hub",
     Description = "No Key",
@@ -4779,7 +4891,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Zenhubtop/zen_hub_pr/
 
 
 
-    tabs.GymLeague:AddButton({
+   tabs.GymLeague:AddButton({
+    Title = "NoName Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://noname-hub.fun/loader.lua"))()
+    end
+})    tabs.GymLeague:AddButton({
     Title = "Speed Hub",
     Description = "No Key",
     Callback = function()
@@ -4787,7 +4905,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Zenhubtop/zen_hub_pr/
     end
 })   tabs.GymLeague:AddButton({
     Title = "Demonic Hub",
-    Description = "",
+    Description = "No Key",
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Prosexy/Demonic-HUB-V2/main/DemonicHub_V2.lua", true))()
     end
@@ -4797,7 +4915,14 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Zenhubtop/zen_hub_pr/
     Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/AbdouGG/Gym-Leauge/main/V1"))()
     end
+})   tabs.GymLeague:AddButton({
+    Title = "Ather Hub",
+    Description = "Need Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Athergaming/Roblox-Gym-League-Script/main/AtherHub%20Gym%20League%20V1_5.lua"))()
+    end
 })
+
 
 
 
