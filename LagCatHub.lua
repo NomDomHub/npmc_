@@ -19,7 +19,14 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/
 
 ----- Load hiệu ứng chạy script
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/NomDomHub/npmc_/refs/heads/main/Loading.lua"))()
+local module = loadstring(game:HttpGet("https://raw.githubusercontent.com/x2neptunereal/Alchemy/refs/heads/main/ui/loader.luau"))()
+
+module:LoadInit({
+    Text = "Lag Cat", -- tên bạn
+    Size = 70,
+    Color = Color3.fromRGB(255, 255, 255),
+    Duration = 1.5
+})
 
 
 ThongBao:Notify({
@@ -29,8 +36,8 @@ ThongBao:Notify({
 })
 
 ThongBao:Notify({
-    Title = "Lag Cat",
-    Content = "Wait 10 to 15 for download to complete.",
+    Title = "Lag Cat Hub",
+    Content = "Wait 10 to 15 for loading to complete.",
     Duration = 2
 })
 
@@ -64,7 +71,7 @@ end
 -- Tạo cửa sổ Fluent
 local window = Fluent:CreateWindow({
     Title = isSpecialUser and "Lag Cat Hub [Premium]" or "Lag Cat Hub [Freemium]",
-    SubTitle = "by Sus | https://discord.gg/KTG45Zv58j",
+    SubTitle = "by . | https://discord.gg/KTG45Zv58j",
     TabWidth = (UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled) and 160 or 190,  -- Mobile: 160, PC: 190
     Theme = "Dark",
     Acrylic = false,
@@ -164,6 +171,20 @@ local Announcement = tabs.Main:AddSection("Announcement")
 local UpdateScript = tabs.Main:AddSection("Update Script")
 
 -----phần update Script 
+
+
+
+
+UpdateScript:AddParagraph({
+    Title = "Update : 42",
+    Content = [[
+[+] Add some scripts.
+[+] Add game can join game.
+[+] More information about some old updates.
+[/] Corrected spelling of some misspelled words.
+[/] Remake loading effect.
+]] 
+})
 
 
 
@@ -276,10 +297,40 @@ UpdateScript:AddParagraph({
 
 
 
+UpdateScript:AddParagraph({
+    Title = "Update : 34",
+    Content = [[
+[ All Game ]
+[+] Add some game scripts.
+[+] Adjust Grow a Garden to divide the sections into Main and Kaitun.
+[+] Remake loading effect.
+[+] Add tab split tabs.
+[+] Adjust the on/off button to avoid turning on something else when turning on the UI with that button.
+]]
+})
 
 
 
 
+UpdateScript:AddParagraph({
+    Title = "Update : 33",
+    Content = [[
+[+] Remake the question webbook and change the question.
+]]
+})
+
+
+UpdateScript:AddParagraph({
+    Title = "Update : 32",
+    Content = [[
+[+] Add game scripts blox fruit, grow a garden, deed rails, blade ball, door, forsaken, bubble rubber simulator, mm2.
+[+] Add transformation section in blox fruit tab.
+[+] Fix some spelling errors.
+[+] Add new discord link.
+[+] Fix camera unlock error but mouse unlock.
+[+] Add transformation animation v4 except angel race , I will update it.
+]]
+})
 
 
 
@@ -297,6 +348,12 @@ Community:AddButton({
     Description = "Discord",
     Callback = function()
         setclipboard("https://discord.gg/KTG45Zv58j")
+        ThongBao:Notify({
+    Title = "Lag Cat Hub",
+    Content = "Copied",
+    Duration = 2
+})
+
     end
 })
 
@@ -311,7 +368,7 @@ Community:AddButton({
 local Developer = tabs.Infor:AddSection("Developer")
 
 -- Developer Section with Paragraphs
-Developer:AddParagraph({ Title = "Sus", Content = "Developer" })
+Developer:AddParagraph({ Title = ".", Content = "Developer" })
 Developer:AddParagraph({ Title = "KhangG", Content = "Helper" })
 
 
@@ -821,13 +878,13 @@ joinIDSection:AddButton({
 -- Tạo Section: Join Game
 local joinGameSection = tabs.Fuction:AddSection("Join Game")
 
--- Danh sách game
 local gameList = {
     ["Blox Fruits"] = 2753915549,
     ["Grow A Garden"] = 126884695634066,
     ["Deed Rails"] = 116495829188952,
     ["Bubble Rubber Simulator"] = 85896571713843,
     ["Blue Lock"] = 18668065416,
+    ["Brookhaven"] = 4924922222,
     ["Arise Crossover"] = 87039211657390,
     ["Forsaken"] = 85896571713843,
     ["Blade Ball"] = 13772394625,
@@ -837,21 +894,38 @@ local gameList = {
     ["Basketball"] = 130739873848552,
     ["Mm2"] = 142823291,
     ["The Strongest Battlegrounds"] = 10449761463,
+    ["Heroes Battlegrounds"] = 13076380114, 
+    ["Rivals"] = 17625359962,
     ["Cộng Đồng Việt Nam"] = 18192562963,
     ["Anime Saga"] = 17850641257,
-    ["Anime Rangers"] = 72829404259339,
+    ["Anime Rangers X"] = 72829404259339,
     ["Anime Vanguards"] = 16146832113,
     ["Anime Last Stand"] = 12886143095,
     ["Attack On Titan Revolution"] = 13379208636,
     ["Door"] = 6516141723,
     ["King Legacy"] = 4520749081,
-    ["Rivals"] = 17625359962,
-    ["Brookhaven"] = 4924922222,
-    ["Meme Sea"] = 10260193230,
-    ["Gym League"] = 17450551531,
-    ["Evade"] = 9872472334,
     ["Bee Swarm Simulator"] = 1537690962,
+    ["Evade"] = 9872472334,
+    ["Gym League"] = 17450551531,
+    ["Meme Sea"] = 10260193230,
+    ["Slap Tower"] = 95508886069297,
+    ["Arsenal"] = 286090429,
+    ["Dig to Earths"] = 81440632616906,
+    ["Muscle Legends"] = 3623096087,
+    ["Legends Of Speed"] = 3101667897,
+    ["Ninja Legends"] = 3956818381,
+    ["Pet Simulator 99"] = 8737899170,
+    ["Jujutsu Shenanigans"] = 9391468976,
+    ["Sols RNG"] = 15532962292,
+    ["Jailbreak"] = 606849621,
+    ["Natural Disaster Survival"] = 189707,
+    ["BedWars"] = 6872265039,
+    ["Build A Boat For Treasure"] = 537413528,
+    ["Piggy PIG"] = 4623386862,
+    ["Block Spin"] = 104715542330896,
+    ["Tower of Hell"] = 1962086868,
 }
+
 
 -- Dropdown chọn game
 local selectedGame
@@ -2542,8 +2616,19 @@ local GrowMain = tabs.Growagarden:AddSection("Main")
 
 
 
-
-GrowMain:AddButton({
+    GrowMain:AddButton({
+    Title = "ThundarZ Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/ThundarZ/Welcome/refs/heads/main/Main/Loader/AllGame.lua'))()   
+    end
+})    GrowMain:AddButton({
+    Title = "Zinner Hub",
+    Description = "No Key",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/HoangNguyenk8/Roblox/refs/heads/main/GrowAGarden.luau"))()
+    end
+})    GrowMain:AddButton({
     Title = "Bock Hub",
     Description = "Need Key",
     Callback = function()
@@ -4387,7 +4472,7 @@ tabs.Tsb:AddButton({
     end
 })    tabs.Rivals:AddButton({
     Title = "Duck Hub",
-    Description = "No Key",
+    Description = "Need Key",
     Callback = function()
         loadstring(game:HttpGet('https://raw.githubusercontent.com/HexFG/duckhub/refs/heads/main/loader.lua'))()
     end
