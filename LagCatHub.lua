@@ -174,6 +174,17 @@ local UpdateScript = tabs.Main:AddSection("Update Script")
 
 
 
+UpdateScript:AddParagraph({
+    Title = "Update : 43",
+    Content = [[
+[+] Add some scripts.
+[+] Add latest version of some scripts.
+[+] Add Auto Chest section in blox fruit tab.
+]] 
+})
+
+
+
 
 UpdateScript:AddParagraph({
     Title = "Update : 42",
@@ -1509,6 +1520,12 @@ Mainbf:AddButton({
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Xero2409/XeroHub/refs/heads/main/main.lua"))()  
     end
 })    Mainbf:AddButton({
+    Title = "Zumaru Hub",
+    Description = "I don't know",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidip1/Hack/refs/heads/main/script.lua"))()
+    end
+})    Mainbf:AddButton({
     Title = "StarryMoon Hub",
     Description = "No Key",
     Callback = function()
@@ -2230,9 +2247,153 @@ loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/d734d024f3000c
 }
 loadstring(game:HttpGet('https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua'))()
     end
+})   Autofruit:AddButton({
+    Title = "Vxeze Hub",
+    Description = "No Key",
+    Callback = function()
+        repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+_G.VxezeConfig = {
+    Main = {
+        ["Team"] = "Pirates", -- Pirates/Marines
+        ["Auto Farm"] = true, -- false/true [ Start Fram ]
+        ["Choose Mode"] = "Teleport Fruit", -- Tween Fruit/Teleport Fruit
+        ["Auto Random Fruit"] = true, -- true/false [ Random Fruit ]
+        ["Auto Store Fruit"] = true -- [ Store Fruit ]
+    },
+    Items = {
+        ["Auto Buy Legendary Sword"] = true, -- true/false [ Auto Buy Legendary Sword ]
+        ["Auto Buy Haki Color"] = true -- true/false [ Auto Buy Haki Color ]
+    },
+    Chat = {
+        ["Enabled"] = true, --- true/false [ Chat ]
+        ["Message"] = {"Vxeze Hub Auto Fruit On Top"},
+        ["Delay"] = 2 -- Delay in seconds between messages
+    },
+    Misc = {
+        ["White Screen"] = false, -- true/false [ White Screen ]
+        ["Disabled Notify"] = true, -- true/false [ Disabled Notify ]
+        ["Boots FPS"] = false, -- true/false [ Boots FPS ]
+        ["Auto Rejoin"] = true -- true/false [ Auto Rejoin ]
+    }
+}
+loadstring(game:HttpGet("https://pandadevelopment.net/virtual/file/e50b45018b39ad3e"))()
+    end
 })
 
 
+
+
+
+
+
+local AutoChestBF = tabs.Bloxfruit:AddSection("Auto Chest")---- Add mục Main 
+
+
+
+
+
+
+
+    AutoChestBF:AddButton({
+    Title = "Skull Hub fly to the chest",
+    Description = "No Key",
+    Callback = function()
+        getgenv().BloxFruits = {
+    ["Team"] = "Marines", -- Pirates/Marines
+    ["TweenSpeed"] = 350, -- Studs per second 380 no flag but kick
+    ["Fruit"] = {
+        ["FruitNotifier"] = false, -- Fruit notifier
+        ["AutoRandom"] = true, -- Auto random/store fruit
+        ["FruitSniper"] = {
+            ["Enabled"] = false, -- Auto buy fruit in normal shop
+            ["TargetFruits"] = {"Yeti-Yeti", "Dragon-Dragon", "Dough-Dough"},
+        },
+    },
+    ["Farm"] = {
+        ["Enabled"] = true, -- Farm chest & fruit
+        ["FastMethod"] = false, -- Faster but more risky
+        ["BlatantMethod"] = false, -- Instant tp no tween
+        ["AutoHop"] = true, -- Auto hop after collect all
+        ["ItemHop"] = true, -- God's Chalice/Fist of Darkness
+    },
+    ["Webhook"] = {
+        ["Enabled"] = false,
+        ["URL"] = "Your Webhook Url",
+        ["UserId"] = "Id Discord",
+    },
+    ["BlackScreen"] = false,
+    ["FpsBoost"] = true, -- Boost FPS
+    ["AntiIdle"] = true, -- Anti AFK
+}
+loadstring(game:HttpGet('https://raw.githubusercontent.com/hungquan99/SkullHub/main/loader.lua'))()
+    end
+})    AutoChestBF:AddButton({
+    Title = "Skull Hub tp to the chest",
+    Description = "No Key",
+    Callback = function()
+        getgenv().SH_Settings = {
+["MainConfig"] = {
+["Enable Farm"] = true,
+["Version Farm"] = "1", -- Version 1 Very Fast 2 Slow But Safe
+["Sniper Legendary Item"] = true
+},
+["Settings"] = {
+["Choose Team"] = "Marines",
+["White Screen"] = false,
+["Reset Anti Detect"] = true,
+["Time Checker"] = 300, -- Check Time For Next Server
+["Hop 2"] = false,
+["Webhook"] = {
+["Enable Webhook"] = false,
+["Link"] = "", -- Discord Webhook Link
+["Thumbnail"] = "",
+["Lock Beli"] = 1000000000,
+["Ping User ID"] = "everyone" -- Only ID
+}
+},
+["FruitSniper"] = {
+["Enable Sniper Fruit"] = true,
+["Fruit"] = {
+"Leopard-Leopard",
+"Kitsune-Kitsune",
+"Dragon-Dragon",
+"Yeti-Yeti",
+"Dough-Dough"
+}
+},
+["Legendary Sword"] = {
+["Enable Auto Buy"] = true
+},
+["Aura Haki"] = {
+["Enable Auto Buy"] = true
+}
+}
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xxhumggxx/SkullHub/refs/heads/main/ChestV2.lua"))()
+    end
+})    AutoChestBF:AddButton({
+    Title = "Vxeze Hub",
+    Description = "No Key",
+    Callback = function()
+         getgenv().config = {
+    Setting = {
+        ["Team"] = "Marines",         --Pirates\Marines
+        ["Disabled Notify"] = false,
+        ["Boots FPS"] = false,
+        ["White Screen"] = false,
+        ["No Stuck Chair"] = true, 
+        ["Auto Rejoin"] = true,
+    },
+    ChestFarm = {
+        ["Start Farm Chest"] = true,
+        ["Stop When Have Item"] = true, 
+    },
+    Webhook = {
+        ["Webhook Url"] = "",
+        ["Send Webhook"] = true,
+    },
+}loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/refs/heads/main/VxezeHubAutoChest.lua"))()
+    end
+})
 
 
 
@@ -2905,51 +3066,43 @@ local GrowKaitun = tabs.Growagarden:AddSection("Kaitun")
     Description = "No Key",
     Callback = function()
         getgenv().VxezeHubConfig = {
-    ["Auto Collect Plants"] = true,
-    ["Auto Collect Moonlit Fruit"] = true,
-    ["Auto Collect Blood Fruit"] = true,
-    ["Loop Auto Sell"] = true,
-
-    ["Auto Buy M+ Seeds"] = true,
-    ["Auto Buy Selected Seeds"] = true,
-    ["Select All Seeds"] = true,
-    ["SelectedSeedsToBuy"] = {
-        ["Apple"] = true, ["Bamboo"] = true, ["Beanstalk"] = true, ["Blueberry"] = true,
-        ["Cacao"] = true, ["Cactus"] = true, ["Carrot"] = true, ["Coconut"] = true,
-        ["Corn"] = true, ["Daffodil"] = true, ["Dragon Fruit"] = true , ["Grape"] = true,
-        ["Mango"] = true, ["Mushroom"] = true, ["Orange"] = true, ["Pepper"] = true,
-        ["Pumpkin"] = true, ["Strawberry"] = true, ["Tomato"] = true, ["Watermelon"] = true
+    ["AutoCollect"] = true,
+    ["AutoPlant"] = true,
+    ["AutoDestroy"] = false,
+    ["SellThreshold"] = 1,
+    ["PlantsToDestroy"] = {
+        ["Daffodil"] = false, ["Coconut"] = false, ["Tomato"] = false, ["Apple"] = false,
+        ["Blueberry"] = false, ["Strawberry"] = false, ["Watermelon"] = false, ["Mushroom"] = false,
+        ["Pumpkin"] = false, ["Pepper"] = false, ["Cacao"] = false, ["Corn"] = false,
+        ["Dragon Fruit"] = false, ["Orange Tulip"] = false, ["Carrot"] = false, ["Mango"] = false,
+        ["Cactus"] = false, ["Beanstalk"] = false, ["Grape"] = false, ["Bamboo"] = false
     },
-
-    ["Auto Buy Blood"] = true,
-    ["Select All Blood Items"] = true,
-    ["SelectedBloodItemsToBuy"] = {
-        ["Blood Banana"] = true, ["Blood Hedgehog"] = true, ["Blood Kiwi"] = true, ["Blood Owl"] = true,
-        ["Moon Melon"] = true, ["Mysterious Crate"] = true, ["Night Egg"] = true,
-        ["Night Seed Pack"] = true, ["Star Caller"] = true
+    ["AutoBuySeed"] = true,
+    ["SelectSeed"] = {
+        ["Carrot"] = true, ["Strawberry"] = true, ["Blueberry"] = true, ["Orange Tulip"] = true,
+        ["Tomato"] = true, ["Corn"] = true, ["Daffodil"] = true, ["Watermelon"] = true,
+        ["Pumpkin"] = true, ["Apple"] = true, ["Bamboo"] = true, ["Coconut"] = true,
+        ["Cactus"] = true, ["Dragon Fruit"] = true, ["Mango"] = true, ["Grape"] = true,
+        ["Mushroom"] = true, ["Pepper"] = true, ["Cacao"] = true, ["Beanstalk"] = true
     },
-
-    ["Auto Buy Eggs"] = false,
-    ["Eggs"] = {
-        ["Common"] = true, ["Uncommon"] = true, ["Rare"] = true,
-        ["Legendary"] = true, ["Mythical"] = true, ["Bug"] = true,
+    ["AutoBuySeed_UseCustomDelay"] = false,
+    ["AutoBuySeed_CustomDelaySeconds"] = 1,
+    ["AutoBuySelectedGear"] = false,
+    ["SelectedGearToBuy"] = {
+        ["Trowel"] = false, ["Watering Can"] = false, ["Basic Sprinkler"] = false,
+        ["Advanced Sprinkler"] = false, ["Godly Sprinkler"] = false, ["Lightning Rod"] = false,
+        ["Master Sprinkler"] = false, ["Harvest Tool"] = false
     },
-    ["Auto Plant All Seeds"] = true,
-    ["Select All Plantable Seeds"] = true,
-    ["SelectedSeedsToPlant"] = {
-        ["Apple"] = true, ["Bamboo"] = true, ["Beanstalk"] = true, ["Blueberry"] = true,
-        ["Cacao"] = true, ["Cactus"] = true, ["Carrot"] = true, ["Coconut"] = true,
-        ["Corn"] = true, ["Daffodil"] = true, ["Dragon Fruit"] = false, ["Grape"] = true,
-        ["Mango"] = true, ["Mushroom"] = true, ["Orange"] = true, ["Pepper"] = true,
-        ["Pumpkin"] = true, ["Strawberry"] = true, ["Tomato"] = true, ["Watermelon"] = true
+    ["AutoBuyGearDelaySeconds"] = 1, ["LastEnteredJobId"] = "",
+    ["AutoSubmitPollinatedFruit"] = false, ["AutoSubmitPollinatedDelaySeconds"] = 10,
+    ["AutoBuyHoneyShopItems"] = false,
+    ["SelectedHoneyShopItemsToBuy"] = {
+        ["Flower Seed Pack"] = false, ["Nectarine"] = false, ["Hive Fruit"] = false,
+        ["Honey Sprinkler"] = false, ["Bee Egg"] = false, ["Bee Crate"] = false,
+        ["Honey Comb"] = false, ["Bee Chair"] = false, ["Honey Torch"] = false, ["Honey Walkaway"] = false
     },
-
-    ["Auto Submit Moonlit"] = false,
-    ["Anti-AFK"] = true,
-    ["Player NoClip"] = true,
-    ["Camera NoClip"] = true,
-    ["Continuous E Hold"] = true,
-    ["Auto Max Zoom"] = true,
+    ["AutoBuyHoneyShopDelaySeconds"] = 1, ["Anti-AFK"] = true, ["Auto Max Zoom"] = true,
+    ["Boost FPS"] = false,
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/refs/heads/main/VxezeHubGrowAGardenKaitun.lua"))()
     end
@@ -2958,16 +3111,26 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Dex-Bear/Vxezehub/ref
     Description = "No Key",
     Callback = function()
         repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+_G.Version = "Lite"
 getgenv().Kaitun = {
     ["Start Kaitun"] = {
-        ["Enable"] = true,--Enabled Auto Sell/Auto Collect no need collect
-        ["Boost Fps"] = true,
+        ["Enable"] = true,--Enabled Auto Sell
+        ["Boost Fps"] = false,--White Screen Is Better
         ["Remove Notify"] = true,
+        ["Delay Auto Sell"] = 2,
+        ["FPS Lock"] = {
+            ["Enable"] = false,
+            ["FPS"] = 20
+        },
+        ["Lite UI"] = {
+            ["Blur"] = true,
+            ["White Screen"] = false
+        },
         ["UI Screen Color"] = "Blur", --Dark --Blur
         ["Auto Hop Server"] = {
-            ["Auto Hop When Get Hight Ping"] = true,
+            ["Auto Hop When Get Hight Ping"] = true, -- It's will fix all problem like auto plant
             ["Enable"] = true,
-            ["Delay"] = 3000 --second
+            ["Delay"] = 600 --second
         }
     },
     ["Webhook"] = {
@@ -2977,12 +3140,13 @@ getgenv().Kaitun = {
     },
     ["Sell"] = {
         ["Mutation to Ignore"] = {"Moonlit"},
-        ["Ignore Target Mutation"] = true
+        ["Ignore Target Mutation"] = false
     },
     ["Plant"] = {
+        ["Method"] = "1 Pos", --Random Pos
         ["Auto Buy All Seed On Stock"] = true,
         ["Auto Water the plant"] = true,
-        ["Delay plant"] = 0.5,
+        ["Delay plant"] = 0.1,
         ["Auto Plant"] = true,
         ["Auto Use Seed Pack"] = true,
         ["Sprinkler"] = {
@@ -2990,25 +3154,38 @@ getgenv().Kaitun = {
             ["Auto Use Sprinkler/Gear"] = true
         }
     },
+    ["Auto Remove Plant When Reached Max"] = {
+        ["Enable"] = true,
+        ["Target Plant for remove"] = {"Carrot", "Strawberry", "Blueberry"},
+        ["Number of plants after removal"] = 500,--plant
+    },
     ["Egg-Pet"] = {
         ["Select Egg to buy"] = {"Bug Egg", "Legendary Egg", "Common Egg"},
         ["Auto Buy"] = true,
         ["Auto Plant Egg"] = true,
-        ["Auto Hatch"] = false,
+        ["Auto Hatch"] = true,
         ["Auto Feed"] = false,
         ["Pet Service"] = {
-            ["Target Pet To Release"] = {},
+            ["Target Pet To Release"] = {"Dragonfly", "Red Fox", "Blood Owl", "Dog"},
             ["Auto Release Pet"] = true,
             ["Auto Sell Pet In Inventory"] = true
         },
     },
-    ["Event"] = { --Patched
+    ["Event"] = {
         ["Moonlit"] = {
             ["Auto Ignore Sell Moonlit Mutation"] = true,
-            ["Auto Get Lunar Point"] = true
+            ["Auto Get Lunar Point"] = true,
+            ["Twilight Shop"] = {
+                ["Target list"] = {"Night Egg", "Twilight Crate", "Star Caller"}, -- https://growagarden.fandom.com/wiki/Twilight_Shop for get name
+                ["Auto Buy"] = true
+            },
+            ["Auto Hop Find Moonlit-Twilight Shop"] = { --using API
+                ["Min money to hop find"] = 15000000,--15M
+                ["Enable"] = true
+            }
         },
         ["BloodMoon"] = {
-            ["BloodMoon Shop"] = {
+            ["BloodMoon Shop"] = {--using API
                 ["Target List"] = {"Blood Owl", "Night Seed Pack", "Night Egg", "Star Caller", "Blood Hedgehog", "Mysterious Crate"},
                 ["Auto Buy"] = true,
             },
@@ -3016,10 +3193,20 @@ getgenv().Kaitun = {
                 ["Min money to hop find"] = 10000000,
                 ["Enable"] = true
             }
+        },
+        ["Swarm Event"] = {
+            ["Auto Get Anti Bee Egg"] = true,
+            ["Auto Get Crafters Seed Pack"] = true,
+            ["Just Collect Pollinated Plant When Event Happening"] = true,
+            ["Auto Get Honey"] = true,
+            ["Shop"] = {
+                ["Target List"] = {"Flower Seed Pack", "Bee Crate", "Honey Torch"},
+                ["Auto Trade"] = true
+            }
         }
     }
 }
-loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a95faa4e81c4b5ae6a1ebb3a853debe0.lua"))()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a95faa4e81c4b5ae6a1ebb3a853debe0.lua"))() 
     end
 })    GrowKaitun:AddButton({
     Title = "Solix Hub",
@@ -3589,31 +3776,17 @@ tabs.Petgo:AddButton({
 
 
     tabs.Deedrails:AddButton({
+    Title = "Zumaru Hub Auto Bond",
+    Description = "I don't know",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/skibidip1/Hack/refs/heads/main/script.lua"))()
+    end
+})    tabs.Deedrails:AddButton({
     Title = "Hung Hub 2.0 Auto Bond",
     Description = "No Key",
     Callback = function()
-        getgenv().AutoExecute = true
-
-local HttpRequest = (syn and syn.request) or (http and http.request) or request
-
-if not HttpRequest then return end
-
-local success, response = pcall(function()
-    return HttpRequest({
-        Url = "https://hungquan99.xyz/HungHub",
-        Method = "GET",
-        Headers = {
-            ["IsExploit"] = "true"
-        }
-    })
-end)
-
-if success and response and response.Body then
-    local func = loadstring(response.Body)
-    if func then
-        pcall(func)
-    end
-end
+        Auto_Execute = true
+loadstring(game:HttpGet('https://hungquan99.xyz/Script/HungHub.lua'))() 
     end
 })    tabs.Deedrails:AddButton({
     Title = "Lunec Hub",
