@@ -22,7 +22,6 @@ local Window = Fluent:CreateWindow({
     UserInfoSubtitleColor = Color3.fromRGB(71, 123, 255)
 })
 
--- Tabs
 local Tabs = {
     Dev = Window:AddTab({ Title = "About", Icon = "info" }),
     Farm = Window:AddTab({ Title = "Farm", Icon = "box" }),
@@ -60,7 +59,7 @@ local function getPrimaryPart(model)
     return p
 end
 
--- 🧩 Đăng ký loại ESP
+--Đăng ký loại ESP
 function ESPManager:RegisterType(name, color, filterFn, showHP)
     self.Filters[name] = filterFn
     self.Colors[name] = color
@@ -359,7 +358,7 @@ local Options = Fluent.Options
         Content = "Thank you for using the script!"
     })
 
-    Tabs.Dev:AddSection("↳ Links")
+    Tabs.Dev:AddSection("↳Links")
 
     Tabs.Dev:AddButton({
         Title = "Discord",
@@ -791,7 +790,7 @@ end)
 
 
 
-    Tabs.Farm:AddSection("↳ Generator")
+    Tabs.Farm:AddSection("↳Generator")
 
 do
 local solveGeneratorCooldown = false
@@ -1144,7 +1143,7 @@ end
 
 
 
-    Tabs.Farm:AddSection("↳ Items")
+    Tabs.Farm:AddSection("Items")
 
 local Players = game:GetService("Players")
 local LP = Players.LocalPlayer
@@ -1204,7 +1203,7 @@ Tabs.Main:AddParagraph({
 
 
 
-    Tabs.Main:AddSection("↳ Eliot")
+    Tabs.Main:AddSection("↳Eliot")
 
 do
 -- 🧩 GUI Toggle + Input
@@ -1500,7 +1499,7 @@ do
 end
 
 
-    Tabs.Main:AddSection("↳ Shedletsky")
+    Tabs.Main:AddSection("Shedletsky")
 
 
 do
@@ -1892,7 +1891,7 @@ end
 
 
 
-    Tabs.Main:AddSection("↳ Chance")
+    Tabs.Main:AddSection("↳Chance")
 
 
 
@@ -2285,7 +2284,7 @@ end
 
 
 
-    Tabs.Main:AddSection("↳ Two Time")
+    Tabs.Main:AddSection("Two Time")
 
 
 --// Auto Backstab Unified (AI Aimbot + Player Aimbot, tự động quét Killers Folder)
@@ -2552,7 +2551,7 @@ end
 
 
 
-    Tabs.Main:AddSection("↳ 007n7")
+    Tabs.Main:AddSection("007n7")
 
 
 do
@@ -2743,7 +2742,7 @@ end
 
 
 
-    Tabs.Main:AddSection("↳ Dusekkar")
+    Tabs.Main:AddSection("Dusekkar")
 
 
 --// Dusk Aim Assist (Fluent Dropdown trên Toggle) - Locked Target Version
@@ -2918,7 +2917,7 @@ end
 
 
 
-    Tabs.Main:AddSection("↳ Guest1337")
+    Tabs.Main:AddSection("Guest1337")
 
 
 
@@ -3536,7 +3535,7 @@ do
         :OnChanged(function(val) customPunchEnabled = val end)
 end
 
-    Tabs.Main:AddSection("↳ c00lkidd")
+    Tabs.Main:AddSection("c00lkidd")
 
 
 
@@ -3792,7 +3791,7 @@ end
 
 
 
-    Tabs.Main:AddSection("↳ Noli")
+    Tabs.Main:AddSection("Noli")
 
 do
     local RunService = game:GetService("RunService")
@@ -3956,7 +3955,7 @@ end
 
 
 
-    Tabs.Main:AddSection("↳ 1x1x1x1")
+    Tabs.Main:AddSection("1x1x1x1")
 
 do
 -- 🧩 GUI Toggle + Dropdown
@@ -4159,7 +4158,7 @@ end
 
 -- Tabs.Event
 
-    Tabs.Event:AddSection("↳ Halloween")
+    Tabs.Event:AddSection("Halloween")
 
 
 do
@@ -4459,7 +4458,7 @@ Tabs.Event:AddToggle("AutoFarmSukkars", {
 
 
 
-    Tabs.Custom:AddSection("↳ Animation")
+    Tabs.Custom:AddSection("Animation")
 
 --// Fake Killers Anim System (hardened)
 do
@@ -4823,7 +4822,7 @@ end
 
 
 
-    Tabs.Custom:AddSection("↳ Skill")
+    Tabs.Custom:AddSection("Skill")
 
 
 do
@@ -5025,7 +5024,7 @@ if not isfolder(folderPath) then makefolder(folderPath) end
 
 
 
-Tabs.Custom:AddSection("↳ Victim")
+Tabs.Custom:AddSection("Victim")
 
 -- HackerVibe_Toggle.lua
 -- Hiệu ứng hacker thật 3D, có nút bật/tắt (Fake H4CK3R)
@@ -5429,7 +5428,7 @@ end)
 
 
 
-    Tabs.Player:AddSection("↳ Cheats")
+    Tabs.Player:AddSection("Cheats")
 
 local ActiveNoStun = false
 local noStunLoop
@@ -5567,7 +5566,7 @@ Tabs.Player:AddToggle("InfiniteZoom", {
 
 
 
-    Tabs.Player:AddSection("↳ Troller")
+    Tabs.Player:AddSection("Troller")
 
 
 
@@ -5942,7 +5941,7 @@ end
 
 
 
-    Tabs.Player:AddSection("↳ Hitbox")
+    Tabs.Player:AddSection("Hitbox")
 
 
 repeat task.wait() until game:IsLoaded()
@@ -6263,7 +6262,7 @@ end)
 
 
 
-    Tabs.Player:AddSection("↳ Walk Speed")
+    Tabs.Player:AddSection("Walk Speed")
 
 
 local Players = game:GetService("Players")
@@ -6331,7 +6330,7 @@ end)
 
 
 
-    Tabs.Player:AddSection("↳ Teleport Speed")
+    Tabs.Player:AddSection("Teleport Speed")
 
 
 -- === Teleport Speed Setup ===
@@ -6423,7 +6422,7 @@ end)
 -- 🔵 2. PLAYER ESP
 -----------------------------------------------------
 
-    Tabs.Visual:AddSection("↳ Player")
+    Tabs.Visual:AddSection("Player")
 
 _G.ESPManager:RegisterType("Player", Color3.fromRGB(0, 255, 255), function(obj)
     local plr = Players:GetPlayerFromCharacter(obj)
@@ -6474,7 +6473,7 @@ end)
 -- ⚙️ 5. GENERATOR ESP
 -----------------------------------------------------
 
-    Tabs.Visual:AddSection("↳ Other")
+    Tabs.Visual:AddSection("Other")
 
 _G.ESPManager:RegisterType("Generator", Color3.fromRGB(255,255,255), function(obj)
     return obj:IsA("Model") and obj.Name == "Generator" and not (obj:FindFirstChild("Progress") and obj.Progress.Value >= 100)
@@ -6522,7 +6521,7 @@ _G.ESPManager:RegisterType("Subspace", Color3.fromRGB(160, 32, 240), function(ob
     return obj:IsA("Model") and obj.Name == "SubspaceTripmine"
 end, false)
 
-Tabs.Visual:AddSection("↳ Buildman")
+Tabs.Visual:AddSection("Buildman")
 
 Tabs.Visual:AddToggle("DispenserESP_Toggle", {
     Title = "ESP Dispenser",
@@ -6538,7 +6537,7 @@ Tabs.Visual:AddToggle("SentryESP_Toggle", {
     _G.ESPManager:SetEnabled("Sentry", state)
 end)
 
-Tabs.Visual:AddSection("↳ Tapt/Trap")
+Tabs.Visual:AddSection("Tapt/Trap")
 
 Tabs.Visual:AddToggle("TripwireESP_Toggle", {
     Title = "ESP Trip Wire",
@@ -6730,7 +6729,7 @@ Tabs.Misc:AddToggle("RemoveAllBadStuff", {
 
 
 
-    Tabs.Misc:AddSection("↳ Server")
+    Tabs.Misc:AddSection("Server")
 
 
 ------------------------------------------------------------
@@ -6889,7 +6888,7 @@ Tabs.Misc:AddButton({
 
 
 
-    Tabs.Misc:AddSection("↳ Bypass")
+    Tabs.Misc:AddSection("Bypass")
 
 local antiAFKCons = {}
 
@@ -7339,7 +7338,7 @@ end
 
 
 
-    Tabs.Misc:AddSection("↳ Game Play")
+    Tabs.Misc:AddSection("Game Play")
 
 
 
@@ -7493,7 +7492,7 @@ end
 
 
 
-    Tabs.Misc:AddSection("↳ Fix Lag")
+    Tabs.Misc:AddSection("Fix Lag")
 
 -- SCRIPT GIẢM ĐỒ HỌA TỰ ĐỘNG MỖI 10 GIÂY (CÓ TOGGLE + RESTORE)
 -- Dán vào LocalScript (StarterPlayerScripts hoặc executor)
@@ -7756,7 +7755,7 @@ end)
 
 
 
-    Tabs.Misc:AddSection("↳ Show")
+    Tabs.Misc:AddSection("Show")
 
 
 
